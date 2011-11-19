@@ -137,9 +137,11 @@ $(document).ready(function() {
       },
       noEvents : function() {
 
-      },
+      }
+	  /*,
+	  
    data: location+"appointments/"
-
+*/
       
    });
 
@@ -227,8 +229,21 @@ $(document).ready(function() {
       }
 
    });
-           
-        $.getJSON(location+"appointments/", {}, function(json){  // загрузку JSON данных из файла example.json
-           alert(json.note.body);
+   /***/
+   var getKeys = function(obj){
+   var keys = [];
+   for(var key in obj){
+      keys= keys+ key+ ",";
+	   }
+	   return keys;
+	}
+	/**/
+        $.ajax({
+		 url: location+"appointments/", 
+		 context: document.body,
+  		 success: function(data){ 
+           	alert(getKeys(data));
+		 		}
 		});
+		
 });
