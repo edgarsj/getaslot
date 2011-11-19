@@ -53,6 +53,7 @@ table.wc-time-slots {
     width: 100%;
 }
 .wc-day-column {
+	background: #fff;
     border-left: 1px solid #DDDDDD;
     overflow: visible;
     vertical-align: top;
