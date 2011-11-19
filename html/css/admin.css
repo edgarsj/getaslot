@@ -80,7 +80,7 @@ blockquote, q {
 .signin  >.inr{margin: 28px auto 0;width: 235px;}
 .signin .inpt {background: url(../images/design/sinpt.png) no-repeat 0 0;width: 235px;height: 31px;margin: 0 0 10px;}
 .signin .inpt input {width: 215px;padding: 0;border: 0 none;background: none;height: 31px;padding: 9px 10px 10px 10px;font-size: 12px;height: 12px;}
-.signin .forgot {display: block;float: left;border-bottom: 1px dotted #6a6a6a;color: #ecf8fb;margin: 8px 0 0;}
+.signin .forgot {display: block;float: left;border-bottom: 1px dotted #6a6a6a;color: #ecf8fb;margin: 7px 0 0;}
 .signin .submit {display: block;float: right;color: #141414;background: url(../images/design/signin.png) no-repeat 0 0;width: 75px;height: 31px;}
 .signin .submit span {display: block;padding: 7px 0 0;text-align: center;}
 

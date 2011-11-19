@@ -43,7 +43,7 @@ $(document).ready(function() {
          var startField = $dialogContent.find("select[name='start']").val(calEvent.start);
          var endField = $dialogContent.find("select[name='end']").val(calEvent.end);
          var titleField = $dialogContent.find("input[name='title']");
-         var bodyField = $dialogContent.find("textarea[name='body']");
+         var bodyField = $dialogContent.find("input[name='body']");
 
 
          $dialogContent.dialog({
@@ -92,7 +92,7 @@ $(document).ready(function() {
          var startField = $dialogContent.find("select[name='start']").val(calEvent.start);
          var endField = $dialogContent.find("select[name='end']").val(calEvent.end);
          var titleField = $dialogContent.find("input[name='title']").val(calEvent.title);
-         var bodyField = $dialogContent.find("textarea[name='body']");
+         var bodyField = $dialogContent.find("input[name='body']");
          bodyField.val(calEvent.body);
 
          $dialogContent.dialog({
@@ -137,10 +137,8 @@ $(document).ready(function() {
       },
       noEvents : function() {
 
-      }
-	  ,
-	  
-   data: "appointments/"
+      },
+	data: "appointments/"
 
       
    });
@@ -205,30 +203,30 @@ $(document).ready(function() {
    var $endTimeOptions = $endTimeField.find("option");
 
    //reduces the end time options to be only after the start time options.
-   $("select[name='start']").change(function() {
-      var startTime = $(this).find(":selected").val();
-      var currentEndTime = $endTimeField.find("option:selected").val();
-      $endTimeField.html(
-            $endTimeOptions.filter(function() {
-               return startTime < $(this).val();
-            })
-            );
-
-      var endTimeSelected = false;
-      $endTimeField.find("option").each(function() {
-         if ($(this).val() === currentEndTime) {
-            $(this).attr("selected", "selected");
-            endTimeSelected = true;
-            return false;
-         }
-      });
-
-      if (!endTimeSelected) {
-         //automatically select an end date 2 slots away.
-         $endTimeField.find("option:eq(1)").attr("selected", "selected");
-      }
-
-   });
+   // $("select[name='start']").change(function() {
+   //       var startTime = $(this).find(":selected").val();
+   //       var currentEndTime = $endTimeField.find("option:selected").val();
+   //       $endTimeField.html(
+   //             $endTimeOptions.filter(function() {
+   //                return startTime < $(this).val();
+   //             })
+   //             );
+   // 
+   //       var endTimeSelected = false;
+   //       $endTimeField.find("option").each(function() {
+   //          if ($(this).val() === currentEndTime) {
+   //             $(this).attr("selected", "selected");
+   //             endTimeSelected = true;
+   //             return false;
+   //          }
+   //       });
+   // 
+   //       if (!endTimeSelected) {
+   //          //automatically select an end date 2 slots away.
+   //          $endTimeField.find("option:eq(1)").attr("selected", "selected");
+   //       }
+   // 
+   //    });
    /***/
    var getKeys = function(obj){
    var keys = [];
