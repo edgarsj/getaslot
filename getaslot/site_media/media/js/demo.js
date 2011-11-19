@@ -241,7 +241,7 @@ $(document).ready(function() {
         $.get( location+"appointments/",  function(data){ 
 			var datastring =  data.slice(1,-1);
 			alert (datastring);
-			var db = jQuery.parseJSON(datastring);
+			var db = eval(datastring);
            	alert(getKeys(db)); 		
 		});
 		
