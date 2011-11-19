@@ -1,11 +1,14 @@
 import json
-
+import datetime
 # Create your views here.
 from django.shortcuts import render_to_response, get_object_or_404
 from django.core import serializers
 from django.template import RequestContext
 from django.http import HttpResponse
 from django import forms
+
+BUSINESS_HOURS_FROM = 8
+BUSINESS_HOURS_TO = 20
 
 from slots.models import Business, Appointment, WorkSchedule, BusinessEmployee
 
@@ -55,6 +58,47 @@ def schedule(request, business, employee_id):
         o['end'] = a.endtime.isoformat()
         o['readOnly'] = True
         l.append(o)
+    if request.is_ajax() or True:        
+        mimetype = 'application/javascript'
+        data = json.dumps(l)
+        return HttpResponse(data,mimetype)
+    else:
+        return HttpResponse(status=400)
+
+def busy(request, business, employee_id):
+
+    schedules = WorkSchedule.objects.filter(
+                            employee__id=employee_id
+                            )
+    l = []
+    for a in schedules:
+        o = {}
+        o['id'] = a.id
+        o['title'] = ''
+        o['start'] = datetime.datetime.combine(a.date,datetime.time(BUSINESS_HOURS_FROM))
+        o['end'] = a.starttime.isoformat()
+        o['readOnly'] = True
+        l.append(o)
+        
+        for ap in a.appointments.all():
+            o = {}
+            o['id'] = a.id
+            o['title'] = ''
+            o['start'] = ap.starttime.isoformat()
+            o['end'] = ap.endtime.isoformat()
+            o['readOnly'] = True
+            l.append(o)
+
+        o = {}
+        o['id'] = a.id
+        o['title'] = ''
+        o['start'] = a.starttime.isoformat()
+        o['end'] = datetime.datetime.combine(a.date,datetime.time(BUSINESS_HOURS_TO))
+        o['readOnly'] = True
+        l.append(o)
+            
+        
+        
     if request.is_ajax() or True:        
         mimetype = 'application/javascript'
         data = json.dumps(l)
