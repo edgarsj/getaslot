@@ -16,8 +16,7 @@ class Business(models.Model):
     owner = models.ForeignKey(User, related_name="businesses")
     description = models.TextField(_("body"))
     created_at = models.DateTimeField(_("created at"), default=datetime.now)
-    picture = models.ImageField(_(u"Picture"),upload_to="business_pictures/", blank=True,null=True)
-    #tags = TagField()
+    picture = models.ImageField(_(u"Picture"),upload_to="business_pictures/", blank=True,null=True)    
     
     class Meta:
         verbose_name = _("business")
@@ -49,6 +48,7 @@ class WorkSchedule(models.Model):
     employee = models.ForeignKey(BusinessEmployee, related_name="work_schedules")
     starttime = models.DateTimeField(_("start time"))
     endtime = models.DateTimeField(_("end time"))
+    day = models.DateField(_("date"), blank=True, null=True)
     class Meta:
         ordering = ['-endtime']
     def __unicode__(self):
@@ -56,14 +56,19 @@ class WorkSchedule(models.Model):
                       self.starttime.strftime(u'%Y-%m-%d %H:%M'),
                       self.endtime.strftime(u'%Y-%m-%d %H:%M'),
                       )
+    def save(self, **kwargs):
+        self.day = self.starttime.date()
+        super(WorkSchedule, self).save(**kwargs)
 
 class Appointment(models.Model):
     work_schedule = models.ForeignKey(WorkSchedule, related_name="appointments")
     starttime = models.DateTimeField(_("start time"))
     endtime = models.DateTimeField(_("end time"))
+    day = models.DateField(_("date"), blank=True, null=True)
     customer = models.ForeignKey(User, related_name="appointments", blank=True, null=True)
     name = models.CharField(_("name"), max_length=200, blank=True, null=True)
     phone = models.CharField(_("phone"), max_length=200, blank=True, null=True)
+    reminder_sent = models.BooleanField(_("reminder sent"), default=False)
     class Meta:
         ordering = ['-endtime']
     def __unicode__(self):
@@ -71,3 +76,6 @@ class Appointment(models.Model):
                       self.starttime.strftime(u'%Y-%m-%d %H:%M'),
                       self.endtime.strftime(u'%Y-%m-%d %H:%M'),
                       )
+    def save(self, **kwargs):
+        self.day = self.starttime.date()
+        super(WorkSchedule, self).save(**kwargs)
