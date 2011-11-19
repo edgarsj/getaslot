@@ -19,5 +19,7 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
     url(r"^(?P<slug>[\w-]+)/$", 'slots.views.business', name='business'),
+    url(r"^(?P<business>[\w-]+)/appointments/$", 'slots.views.appointments', name="business_appointments"),
 )
+
 urlpatterns += staticfiles_urlpatterns()

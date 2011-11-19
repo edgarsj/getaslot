@@ -13,8 +13,10 @@ def business(request, slug):
     
 def appointments(request, business):
     b = get_object_or_404(Business, slug=business)
-    appointments = Appointment.objects.filter
-    if request.is_ajax():        
+    appointments = Appointment.objects.filter(
+                            work_schedule__employee__id__in=b.employees.values_list('pk', flat=True)
+                            )
+    if request.is_ajax() or True:        
         mimetype = 'application/javascript'
         data = serializers.serialize('json', Appointment.objects.all())
         return HttpResponse(data,mimetype)
