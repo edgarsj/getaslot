@@ -138,7 +138,7 @@ $(document).ready(function() {
       noEvents : function() {
 
       }
-       
+   //  data:
 
       
    });
@@ -227,6 +227,6 @@ $(document).ready(function() {
       }
 
    });
-alert('check');
-	
+
+	alert(location); 
 });
