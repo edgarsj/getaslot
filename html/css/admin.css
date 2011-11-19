@@ -1,0 +1,71 @@
+/* 
+               ------
+     --==    getaslot.com    ==--
+		 -   	v1.0	    -
+		   -        	 -
+			  -       -
+				 ---
+
+/* RESET */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { 
+	margin:0;
+	padding:0;
+}
+a {
+	text-decoration: none;
+}
+ol, ul, dir, menu {
+	list-style: none;
+	list-style-type: none;
+}
+fieldset,img,abbr,acronym,input { 
+	border:0;
+	outline: 0;
+}
+address,caption,cite,code,dfn,em,strong,th,var {
+	font-style:normal;
+	font-weight:normal;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+caption, th, td {
+	font-weight: normal;
+	text-align: left;
+}
+h1,h2,h3,h4,h5,h6 {
+	font-size:100%;
+	font-weight:normal;
+}
+:focus {
+	outline: 0;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+	content: "";
+}
+blockquote, q {
+	quotes: "" "";
+}
+
+/****** GENERAL(gecko ff3 win) ******/
+
+/* Typography */
+
+.clear {	clear: both;}
+
+/* basic structure */
+#header {width: 960px;margin: 0 auto;border: 1px solid #ddd;min-height: 65px;}
+#content {width: 960px;margin: 0 auto;border: 1px solid #ddd;min-height: 300px;}
+#footer {width: 960px;margin: 0 auto;border: 1px solid #ddd;min-height: 50px;}
+
+
+/* custom callendar css */
+
+
+
+
+
+
+
+
