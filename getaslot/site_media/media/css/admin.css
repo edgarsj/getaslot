@@ -56,15 +56,39 @@ blockquote, q {
 
 /* basic structure */
 #header {width: 960px;margin: 0 auto;}
+#header .inr {position: relative;}
 #content {width: 960px;margin: 0 auto;}
 #footer {width: 960px;margin: 0 auto;border: 1px solid #ddd;min-height: 50px;}
 
+/* top menu */
+.topmenu {position: absolute;top: 26px;right: 0;}
+.topmenu li {float: left;position: relative;margin: 0 5px 0 0;}
+.topmenu .child {position: absolute;top: 30px;right: 0;}
+
+.btn1 {background: url(../images/design/btn_sprite.png) no-repeat 0 0;padding-left: 3px;display: block;}
+.btn1 > span {background: url(../images/design/btn_sprite.png) no-repeat right -30px;height: 28px;display: block;}
+.btn1 > span > span {display: block;padding: 5px 12px 0 9px;color: #fff;text-shadow: #8f3e2c 1px 1px 1px;}
+
+.btn2 {background: url(../images/design/btn_sprite.png) no-repeat 0 -60px;padding-left: 3px;display: block;}
+.btn2 > span {background: url(../images/design/btn_sprite.png) no-repeat right -90px;height: 28px;display: block;}
+.btn2 > span > span {display: block;padding: 5px 12px 0 9px;color: #fff;text-shadow: #8f3e2c 1px 1px 1px;}
+
+.parent > a > span > span {background: url(../images/design/parent.png) no-repeat right 10px;padding: 5px 34px 0 9px;}
+
+/* signin */
+.topmenu .signin {background: url(../images/design/sibg.png) no-repeat 0 0;width: 277px;height: 160px;position: absolute;top: 31px;right: 0;z-index: 9999;}
+.signin  >.inr{margin: 28px auto 0;width: 235px;}
+.signin .inpt {background: url(../images/design/sinpt.png) no-repeat 0 0;width: 235px;height: 31px;margin: 0 0 10px;}
+.signin .inpt input {width: 215px;padding: 0;border: 0 none;background: none;height: 31px;padding: 9px 10px 10px 10px;font-size: 12px;height: 12px;}
+.signin .forgot {display: block;float: left;border-bottom: 1px dotted #6a6a6a;color: #ecf8fb;margin: 7px 0 0;}
+.signin .submit {display: block;float: right;color: #141414;background: url(../images/design/signin.png) no-repeat 0 0;width: 75px;height: 31px;}
+.signin .submit span {display: block;padding: 7px 0 0;text-align: center;}
 
 /* custom callendar css */
-body {background: url(../images/design/bg.png) repeat;}
+body {background: url(../images/design/bg.png) repeat;font-size: 12px;}
 .bcknd #header {width: 100%;border-top: 8px solid #262626;}
-.bcknd #header .inr {width: 960px;margin: 0 auto;min-height: 65px;}
-.bcknd .logo {margin: 25px 0 0 29px;}
+.bcknd #header > .inr {width: 960px;margin: 0 auto;min-height: 65px;}
+.bcknd .logo {padding: 25px 0 0 29px;width: 350px;}
 
 #calendar .wc-top {background: #e36245;height: 14px;border-bottom: 1px solid #ba5039;margin: 0 0 0 17px;
 -moz-border-radius-topleft: 10px;-moz-border-radius-topright: 10px;
@@ -84,6 +108,9 @@ border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;
 .wc-time-header-cell {font-size: 12px;font-weight: bold;line-height: 30px;}
 .wc-scrollable-grid {height: 401px!important;}
 
+
+#footer {padding: 0 0 10px;}
+.g48 {width: 100px;height: 45px;float: right;margin: 5px 0 0;}
 
 
 
