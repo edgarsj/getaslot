@@ -233,7 +233,7 @@ $(document).ready(function() {
    var getKeys = function(obj){
    var keys = [];
    for(var key in obj){
-      keys= keys+ key+ "/n"
+      keys= keys+ key+ ",";
 	   }
 	   return keys;
 	}
@@ -241,7 +241,7 @@ $(document).ready(function() {
         $.ajax({
 		 url: location+"appointments/", 
 		 context: document.body,
-  		 success: function(data ){ 
+  		 success: function(data){ 
            	alert(getKeys(data));
 		 		}
 		});
