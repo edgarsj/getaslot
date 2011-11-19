@@ -44,9 +44,19 @@ def schedule(request, business, employee_id):
     schedules = WorkSchedule.objects.filter(
                             employee__id=employee_id
                             )
+    l = []
+    for a in schedules:
+        o = {}
+        o['id'] = a.id
+        o['title'] = a.name
+        o['name'] = a.name
+        o['phone'] = a.phone
+        o['start'] = a.starttime.isoformat()
+        o['end'] = a.endtime.isoformat()
+        l.append(o)
     if request.is_ajax() or True:        
         mimetype = 'application/javascript'
-        data = serializers.serialize('json', schedules)
+        data = json.dumps(l)
         return HttpResponse(data,mimetype)
     else:
         return HttpResponse(status=400)
@@ -56,9 +66,22 @@ class SimpleAppointmentForm(forms.Form):
     name = forms.CharField(max_length=200)
     phone = forms.CharField(max_length=200)
 
-def add_appointment(request, business, work_schedule_id):
+def add_appointment(request, work_schedule_id):
     if (request.is_ajax() or True) and request.method == 'POST':
-        b = get_object_or_404(WorkSchedule, slug=business)
+        ws = get_object_or_404(WorkSchedule, id=work_schedule_id)
+        form = SimpleAppointmentForm(request.POST)
+        if form.is_valid():
+            ap = Appointment()
+            ap.work_schedule = ws
+            ap.name = form.cleaned_data['name']
+            ap.phone = form.cleaned_data['phone']
+        mimetype = 'application/javascript'        
+        return HttpResponse('OK',mimetype)
+    return HttpResponse(status=400)
+
+def add_appointment_noschedule(request, business):
+    if (request.is_ajax() or True) and request.method == 'POST':
+        ws = get_object_or_404(WorkSchedule, slug=business)
         form = SimpleAppointmentForm(request.POST)
         if form.is_valid():
             ap = Appointment(work_schedule)
