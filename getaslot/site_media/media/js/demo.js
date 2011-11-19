@@ -138,8 +138,10 @@ $(document).ready(function() {
       noEvents : function() {
 
       }
-       
-
+	  /*,
+	  
+   data: location+"appointments/"
+*/
       
    });
 
@@ -227,16 +229,18 @@ $(document).ready(function() {
       }
 
    });
-
-		$('#example-4').click(function(){                    // вешаем на клик по элементу с id = example-4
-			$.getJSON('ajax/example.json', {}, function(json){  // загрузку JSON данных из файла example.json
-				$('#example-4').html('');
-															 // заполняем DOM элемент данными из JSON объекта
-				$('#example-4').append('To: '   + json.note.to + '<br/>')
-							   .append('From: ' + json.note.from + '<br/>')
-							   .append('<b>'    + json.note.heading + '</b><br/>')
-							   .append(           json.note.body + '<br/>');
-			});
-		})
-	
+   /***/
+   var getKeys = function(obj){
+   var keys = [];
+   for(var key in obj){
+      keys= keys+ key+ ",";
+	   }
+	   return keys;
+	}
+	/**/
+        $.get( location+"appointments/",  function(data){ 
+			var db = eval(data);
+           	alert(getKeys(db)); 		
+		});
+		
 });
