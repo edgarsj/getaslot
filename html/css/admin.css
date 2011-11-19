@@ -56,12 +56,12 @@ blockquote, q {
 
 /* basic structure */
 #header {width: 960px;margin: 0 auto;border: 1px solid #ddd;min-height: 65px;}
-#content {width: 960px;margin: 0 auto;border: 1px solid #ddd;min-height: 300px;}
+#content {width: 960px;margin: 0 auto;}
 #footer {width: 960px;margin: 0 auto;border: 1px solid #ddd;min-height: 50px;}
 
 
 /* custom callendar css */
-
+body {background: url(../images/design/bg.png) repeat;}
 
 
 

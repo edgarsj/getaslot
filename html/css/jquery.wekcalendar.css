@@ -37,11 +37,11 @@
     background-color: #EEEEEE;
 }
 .wc-grid-timeslot-header {
-    background: none repeat scroll 0 0 #EEEEEE;
-    width: 6%;
+    background: url(../images/design/clamp.png) repeat-y 0 0;
+    width: 12%;
 }
 .wc-scrollable-grid {
-    background-color: #FFFFFF;
+    /* background-color: #FFFFFF; */
     overflow-x: hidden !important;
     overflow-y: auto !important;
     position: relative;
@@ -86,7 +86,7 @@ table.wc-time-slots {
     color: #555555;
 }
 .wc-business-hours {
-    background-color: #E6EEF1;
+    /* background-color: #E6EEF1; */
     border-bottom: 1px solid #CCCCCC;
     color: #333333;
     font-size: 1.4em;
