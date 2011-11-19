@@ -25,10 +25,10 @@ def appointments(request, business):
     for a in appointments:
         o = {}
         o['id'] = a.id
-        o['title'] = a.name
+        #o['title'] = a.name
         o['name'] = a.name
         o['body'] = a.phone
-        o['phone'] = a.phone
+        #o['phone'] = a.phone
                 
         o['start'] = a.starttime.isoformat()
         o['end'] = a.endtime.isoformat()
@@ -64,6 +64,8 @@ def schedule(request, business, employee_id):
 
 
 class SimpleAppointmentForm(forms.Form):
+    start = forms.CharField(max_length=200)
+    end = forms.CharField(max_length=200)
     name = forms.CharField(max_length=200)
     phone = forms.CharField(max_length=200)
 
@@ -76,17 +78,29 @@ def add_appointment(request, work_schedule_id):
             ap.work_schedule = ws
             ap.name = form.cleaned_data['name']
             ap.phone = form.cleaned_data['phone']
+            ap.starttime = form.cleaned_data['start']
+            ap.endtime = form.cleaned_data['end']
+            ap.save()
         mimetype = 'application/javascript'        
         return HttpResponse('OK',mimetype)
     return HttpResponse(status=400)
 
-def add_appointment_noschedule(request, business):
+def add_appointment_noschedule(request, employee_id):
     if (request.is_ajax() or True) and request.method == 'POST':
-        ws = get_object_or_404(WorkSchedule, slug=business)
+        emp = get_object_or_404(BusinessEmployee, id=employee_id)        
         form = SimpleAppointmentForm(request.POST)
         if form.is_valid():
-            ap = Appointment(work_schedule)
-            ap.work_schedule
+            ws = get_object_or_404(WorkSchedule, employee__id=employee_id,
+                                   starttime__lte=form.cleaned_data['start'],
+                                   endtime__gte=form.cleaned_data['end'])
+            #ap = Appointment(work_schedule)
+            ap = Appointment()
+            ap.work_schedule = ws
+            ap.name = form.cleaned_data['name']
+            ap.phone = form.cleaned_data['phone']
+            ap.starttime = form.cleaned_data['start']
+            ap.endtime = form.cleaned_data['end']
+            ap.save()
         mimetype = 'application/javascript'        
         return HttpResponse('OK',mimetype)
     return HttpResponse(status=400)
