@@ -427,7 +427,7 @@
 
                $newEvent.remove();
                var newCalEvent = {start: eventDuration.start, end: eventDuration.end, title: options.newEventText};
-               var $renderedCalEvent = self._renderEvent(newCalEvent, $weekDay);
+               var $renderedCalEvent = self._renderEvent(newCalEvent, $weekDay,false);
 
                if (!options.allowCalEventOverlap) {
                   self._adjustForEventCollisions($weekDay, $renderedCalEvent, newCalEvent, newCalEvent);
@@ -469,19 +469,32 @@
             jsonOptions[options.startParam || 'start'] = Math.round(weekStartDate.getTime() / 1000);
             jsonOptions[options.endParam || 'end'] = Math.round(weekEndDate.getTime() / 1000);
             $.getJSON(options.data, jsonOptions, function(data) {
-               self._renderEvents(data, $weekDayColumns);
+				
+               self._renderEvents(data, $weekDayColumns, false);
                if (options.loading) options.loading(false);
             });
          }
          else if ($.isFunction(options.data)) {
             options.data(weekStartDate, weekEndDate,
                   function(data) {
-                     self._renderEvents(data, $weekDayColumns);
+                     self._renderEvents(data, $weekDayColumns, false);
                   });
          }
          else if (options.data) {
-               self._renderEvents(options.data, $weekDayColumns);
+               self._renderEvents(options.data, $weekDayColumns, false);
             }
+
+         if (typeof options.schedule == 'string') {
+            if (options.loading) options.loading(true);
+            var jsonOptions = {};
+            jsonOptions[options.startParam || 'start'] = Math.round(weekStartDate.getTime() / 1000);
+            jsonOptions[options.endParam || 'end'] = Math.round(weekEndDate.getTime() / 1000);
+            $.getJSON(options.schedule, jsonOptions, function(data) {
+               self._renderEvents(data, $weekDayColumns, true);
+               if (options.loading) options.loading(false);
+            });
+         }
+
 
          self._disableTextSelect($weekDayColumns);
 
@@ -530,7 +543,7 @@
       /*
        * Render the events into the calendar
        */
-      _renderEvents : function (events, $weekDayColumns) {
+      _renderEvents : function (events, $weekDayColumns, schedule) {
          var self = this;
          var options = this.options;
          var eventsToRender;
@@ -565,11 +578,15 @@
 
 
          $.each(eventsToRender, function(i, calEvent) {
-
+			if (schedule == true) {
+				calEvent.readOnly = true;
+				calEvent.draggable = false;
+			
+			}
             var $weekDay = self._findWeekDayForEvent(calEvent, $weekDayColumns);
 
             if ($weekDay) {
-               self._renderEvent(calEvent, $weekDay);
+               self._renderEvent(calEvent, $weekDay,schedule);
             }
          });
 
@@ -589,7 +606,7 @@
        * Render a specific event into the day provided. Assumes correct
        * day for calEvent date
        */
-      _renderEvent: function (calEvent, $weekDay) {
+      _renderEvent: function (calEvent, $weekDay, schedule) {
          var self = this;
          var options = this.options;
          if (calEvent.start.getTime() > calEvent.end.getTime()) {
@@ -603,7 +620,7 @@
 		 <div class=\"wc-title\"></div></div>";
 /*<div class=\"wc-time ui-corner-all\"></div>\*/
          $calEvent = $(eventHtml);
-         $modifiedEvent = options.eventRender(calEvent, $calEvent);
+         $modifiedEvent = options.eventRender(calEvent, $calEvent,schedule);
          $calEvent = $modifiedEvent ? $modifiedEvent.appendTo($weekDay) : $calEvent.appendTo($weekDay);
          $calEvent.css({lineHeight: (options.timeslotHeight - 2) + "px", fontSize: (options.timeslotHeight / 3) + "px"});
 
@@ -747,7 +764,7 @@
 
          var $weekDay = self._findWeekDayForEvent(calEvent, self.element.find(".wc-time-slots .wc-day-column-inner"));
          if ($weekDay) {
-            var $calEvent = self._renderEvent(calEvent, $weekDay);
+            var $calEvent = self._renderEvent(calEvent, $weekDay,false);
             self._adjustForEventCollisions($weekDay, $calEvent, calEvent, calEvent);
             self._refreshEventDetails(calEvent, $calEvent);
             self._positionEvent($weekDay, $calEvent);
@@ -883,7 +900,7 @@
                var newCalEvent = $.extend(true, {start: eventDuration.start, end: eventDuration.end}, calEvent);
                self._adjustForEventCollisions($weekDay, $calEvent, newCalEvent, calEvent, true);
                var $weekDayColumns = self.element.find(".wc-day-column-inner");
-               var $newEvent = self._renderEvent(newCalEvent, self._findWeekDayForEvent(newCalEvent, $weekDayColumns));
+               var $newEvent = self._renderEvent(newCalEvent, self._findWeekDayForEvent(newCalEvent, $weekDayColumns),false);
                $calEvent.hide();
 
                //trigger drop callback
@@ -1306,7 +1323,7 @@
          businessHours : {start: 8, end: 18, limitDisplay : false},
          newEventText : "New Event",
          timeslotHeight: 20,
-         defaultEventLength : 2,
+         defaultEventLength : 1,
          timeslotsPerHour : 4,
          buttons : true,
          buttonText : {

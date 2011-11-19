@@ -152,6 +152,10 @@ LOGGING = {
         },
     }
 }
+
+MESSENTE_USERNAME='6bdb5d9ced04646dddb773f68c7f6dcd'
+MESSENTE_API_KEY='4ed6d42ebad97b20c54c2683ad0671dc'
+
 try:
     from local_settings import *
 except ImportError:
