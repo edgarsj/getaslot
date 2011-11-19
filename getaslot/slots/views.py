@@ -23,10 +23,10 @@ def appointments(request, business):
     else:
         return HttpResponse(status=400)
 
-def schedule(request, employee_id):
+def schedule(request, business, employee_id):
 
     schedules = WorkSchedule.objects.filter(
-                            work_schedule__employee__id=employee_id
+                            employee__id=employee_id
                             )
     if request.is_ajax() or True:        
         mimetype = 'application/javascript'
