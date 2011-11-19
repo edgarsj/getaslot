@@ -272,4 +272,14 @@ $(document).ready(function() {
 			} 	
 		});
 		*/
+		
+		
+		$('#btn1').mouseover(function(n) {
+			$("#btn1_child").show();
+		}).mouseout(function(n) {
+			$("#btn1_child").hide();
+		});
+		
+		
+		
 });
