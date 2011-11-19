@@ -22,9 +22,12 @@ $(document).ready(function() {
          return 501;
       },
 	  
-      eventRender : function(calEvent, $event) {
+      eventRender : function(calEvent, $event, schedule) {
          if (calEvent.end.getTime() < new Date().getTime()) {
-            $event.css("backgroundColor", "#e05034");
+			if (schedule == true)
+				$event.css("backgroundColor", "#cccccc");
+            else
+				$event.css("backgroundColor", "#e05034");
             $event.find(".wc-time").css({
                "backgroundColor" : "#999",
                "border" : "1px solid #888"
@@ -32,7 +35,7 @@ $(document).ready(function() {
          }
       },
       draggable : function(calEvent, $event) {
-         return calEvent.readOnly != false;
+         return calEvent.readOnly == false;
       },
       resizable : function(calEvent, $event) {
          return calEvent.readOnly != false;
@@ -153,7 +156,8 @@ $(document).ready(function() {
       noEvents : function() {
 
       },
-	data: "appointments/"
+	data: "appointments/",
+	schedule: "schedule/"
 
       
    });
