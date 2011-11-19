@@ -3,7 +3,7 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.core import serializers
 from django.template import RequestContext
 from django.http import HttpResponse
-from slots.models import Business,Appointment
+from slots.models import Business, Appointment, WorkSchedule, BusinessEmployee
 
 def business(request, slug):    
     b = get_object_or_404(Business, slug=slug)    
@@ -18,7 +18,19 @@ def appointments(request, business):
                             )
     if request.is_ajax() or True:        
         mimetype = 'application/javascript'
-        data = serializers.serialize('json', Appointment.objects.all())
+        data = serializers.serialize('json', appointments)
+        return HttpResponse(data,mimetype)
+    else:
+        return HttpResponse(status=400)
+
+def schedule(request, employee_id):
+
+    schedules = WorkSchedule.objects.filter(
+                            work_schedule__employee__id=employee_id
+                            )
+    if request.is_ajax() or True:        
+        mimetype = 'application/javascript'
+        data = serializers.serialize('json', schedules)
         return HttpResponse(data,mimetype)
     else:
         return HttpResponse(status=400)
