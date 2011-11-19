@@ -4,3 +4,7 @@ from django.template import RequestContext
 def index(request):
 #	print settings.STATIC_ROOT
 	return render_to_response("index.html", {}, context_instance=RequestContext(request))
+	
+def about(request):
+#	print settings.STATIC_ROOT
+	return render_to_response("about.html", {}, context_instance=RequestContext(request))
