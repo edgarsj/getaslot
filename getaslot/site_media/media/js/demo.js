@@ -238,9 +238,9 @@ $(document).ready(function() {
 	   return keys;
 	}
 	/**/
-	var db = new Object();
         $.get( location+"appointments/",  function(data){ 
-			db = $.parseJSON(data.substring(1,-1))
+			var datastring =  data.substring(1,-1);
+			var db = $.parseJSON(datastring);
            	alert(getKeys(db)); 		
 		});
 		
