@@ -1,4 +1,3 @@
-
 import os, posixpath
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, "site_media", "media")
@@ -7,19 +6,18 @@ MEDIA_ROOT = os.path.join(PROJECT_ROOT, "site_media", "media")
 # Example: "http://media.lawrence.com"
 MEDIA_URL = "/site_media/media/"
 
-#STATIC_ROOT = os.path.join(PROJECT_ROOT, "site_media", "static")
-#STATIC_URL = "/site_media/static/"
+STATIC_ROOT = os.path.join(PROJECT_ROOT, "site_media", "static")
+STATIC_URL = "/site_media/static/"
 
 STATICFILES_DIRS = [
-    os.path.join(PROJECT_ROOT, "media"),
+    os.path.join(PROJECT_ROOT, "media"),    
 ]
 
-ADMIN_MEDIA_PREFIX = posixpath.join(MEDIA_URL, "admin/")
-
+ADMIN_MEDIA_PREFIX = posixpath.join(STATIC_URL, "admin/")
 
 
 TEMPLATE_DIRS = [
-    os.path.join(PROJECT_ROOT, "templates"),
+    os.path.join(PROJECT_ROOT, "templates"),    
 ]
 DEFAULT_FROM_EMAIL = 'no-reply@getaslot.com'
 SERVER_EMAIL = 'web-no-reply@getaslot.com'
