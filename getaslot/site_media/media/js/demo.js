@@ -138,10 +138,10 @@ $(document).ready(function() {
       noEvents : function() {
 
       }
-	  /*,
+	  ,
 	  
-   data: location+"appointments/"
-*/
+   data: "appointments/"
+
       
    });
 
@@ -237,10 +237,22 @@ $(document).ready(function() {
 	   }
 	   return keys;
 	}
-	/**/
+	/*
+	function toEvent(id,start,end,title)
+		{
+			this.id=0;
+			this.start=null;
+			this.end=null;
+			this.title=null;
+		}
         $.get( location+"appointments/",  function(data){ 
 			var db = eval(data);
-           	alert(getKeys(db)); 		
+			var  i = 0;
+			var forCorrectEvent = new Array();
+			for (dbsingle in db)
+           	{
+				forCorrectEvent[i] = new toEvent(dbsingle.pl,dbsingle.fields.starttime,dbsingle.fields.endtime,dbsingle.fields.name);
+			} 	
 		});
-		
+		*/
 });
