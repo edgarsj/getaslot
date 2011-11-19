@@ -239,7 +239,7 @@ $(document).ready(function() {
 	}
 	/**/
         $.get( location+"appointments/",  function(data){ 
-           	alert(getKeys(data)); 		
+           	alert(data); 		
 		});
 		
 });
