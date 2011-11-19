@@ -599,13 +599,13 @@
          var eventClass, eventHtml, $calEvent, $modifiedEvent;
 
          eventClass = calEvent.id ? "wc-cal-event" : "wc-cal-event wc-new-cal-event";
-         eventHtml = "<div class=\"" + eventClass + " ui-corner-all\">\                
-                <div class=\"wc-title\"></div></div>";
+         eventHtml = "<div class=\"" + eventClass + " ui-corner-all\">\
+		 <div class=\"wc-title\"></div></div>";
 /*<div class=\"wc-time ui-corner-all\"></div>\*/
          $calEvent = $(eventHtml);
          $modifiedEvent = options.eventRender(calEvent, $calEvent);
          $calEvent = $modifiedEvent ? $modifiedEvent.appendTo($weekDay) : $calEvent.appendTo($weekDay);
-         $calEvent.css({lineHeight: (options.timeslotHeight - 2) + "px", fontSize: (options.timeslotHeight / 2) + "px"});
+         $calEvent.css({lineHeight: (options.timeslotHeight - 2) + "px", fontSize: (options.timeslotHeight / 3) + "px"});
 
          self._refreshEventDetails(calEvent, $calEvent);
          self._positionEvent($weekDay, $calEvent);

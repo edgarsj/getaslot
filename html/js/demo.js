@@ -12,9 +12,10 @@ $(document).ready(function() {
 	  timeslotHeight: 40,
       businessHours :{start: 8, end: 18, limitDisplay: true },
       daysToShow : 7,
-      height : function($calendar) {
+	  height : function($calendar) {
          return $(window).height() - $("h1").outerHeight() - 1;
       },
+	  
       eventRender : function(calEvent, $event) {
          if (calEvent.end.getTime() < new Date().getTime()) {
             $event.css("backgroundColor", "#aaa");
