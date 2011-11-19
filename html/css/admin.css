@@ -78,7 +78,7 @@ border-top-left-radius: 10px;border-top-right-radius: 10px;
 border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;
 }
 
-.wc-header {margin: 0 0 0 17px;width: 943px;}
+.wc-header {margin: 0 0 0 17px;width: 943px;border-bottom: 1px solid #d7d6ca;}
 .wc-business-hours {margin: 0 0 0 55px;border-bottom: 1px solid #d7d6ca;}
 .wc-hour-end, .wc-hour-header {border-bottom: 1px solid #d7d6ca;}
 .wc-time-header-cell {font-size: 12px;font-weight: bold;line-height: 30px;}
