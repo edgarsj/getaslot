@@ -6,12 +6,11 @@ $(document).ready(function() {
 
    $calendar.weekCalendar({
       timeslotsPerHour : 1,
-      allowCalEventOverlap : false,
+      allowCalEventOverlap : true,
       overlapEventsSeparate: true,
       firstDayOfWeek : 1,
       businessHours :{start: 8, end: 18, limitDisplay: true },
       daysToShow : 7,
-	  timeslotHeight: 40,
       height : function($calendar) {
          return $(window).height() - $("h1").outerHeight() - 1;
       },
@@ -71,14 +70,13 @@ $(document).ready(function() {
 
       },
       eventDrop : function(calEvent, $event) {
-        
       },
       eventResize : function(calEvent, $event) {
       },
       eventClick : function(calEvent, $event) {
 
          if (calEvent.readOnly) {
-             
+            return;
          }
 
          var $dialogContent = $("#event_edit_container");
@@ -128,7 +126,6 @@ $(document).ready(function() {
       eventMouseover : function(calEvent, $event) {
       },
       eventMouseout : function(calEvent, $event) {
-		 
       },
       noEvents : function() {
 
@@ -137,7 +134,7 @@ $(document).ready(function() {
          callback(getEventData());
       }
    });
-	
+
    function resetForm($dialogContent) {
       $dialogContent.find("input").val("");
       $dialogContent.find("textarea").val("");
@@ -150,14 +147,12 @@ $(document).ready(function() {
 
       return {
          events : [
-		 
             {
                "id":1,
                "start": new Date(year, month, day, 12),
-               "end": new Date(year, month, day, 13, 00),
-               "title":"Lunch with Mike. This is the text that nobody sees!",
-			   readOnly: true
-             } /*,
+               "end": new Date(year, month, day, 13, 30),
+               "title":"Lunch with Mike"
+            },
             {
                "id":2,
                "start": new Date(year, month, day, 14),
@@ -189,7 +184,7 @@ $(document).ready(function() {
                "title":"I'm read-only",
                readOnly : true
             }
-*/
+
          ]
       };
    }
@@ -268,17 +263,5 @@ $(document).ready(function() {
       }).show();
    });
 
-/* -------------*/
-var getKeys = function(obj){
-   var keys= new String ;
-   for(var key in obj){
-      keys = keys + key+"</ br>";
-   }
-   return keys;
-}
-	$('.wc-cal-event').qtip({
-				   content: $(this).data('calEvent'),
-				   show: 'mouseover',
-				   hide: 'mouseout'
-				});
+
 });
