@@ -22,5 +22,5 @@ TEMPLATE_DIRS = [
 ]
 DEFAULT_FROM_EMAIL = 'no-reply@getaslot.com'
 SERVER_EMAIL = 'web-no-reply@getaslot.com'
-CONTACT_EMAIL = 'slots@getaslot.com"'
+CONTACT_EMAIL = 'slots@getaslot.com'
 EMAIL_SUBJECT_PREFIX = '[Getaslot]'
