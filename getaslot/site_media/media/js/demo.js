@@ -53,7 +53,7 @@ $(document).ready(function() {
 
          $dialogContent.dialog({
             modal: true,
-            title: "New Calendar Event",
+            title: "Appointment",
             close: function() {
                $dialogContent.dialog("destroy");
                $dialogContent.hide();
