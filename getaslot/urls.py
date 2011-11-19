@@ -20,6 +20,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r"^(?P<slug>[\w-]+)/$", 'slots.views.business', name='business'),
     url(r"^(?P<business>[\w-]+)/appointments/$", 'slots.views.appointments', name="business_appointments"),
+	url(r"^(?P<business>[\w-]+)/schedule/$", 'slots.views.schedule', name="business_schedule"),
 )
 
 urlpatterns += staticfiles_urlpatterns()
