@@ -45,8 +45,8 @@ $(document).ready(function() {
          resetForm($dialogContent);
          var startField = $dialogContent.find("select[name='start']").val(calEvent.start);
          var endField = $dialogContent.find("select[name='end']").val(calEvent.end);
-         var titleField = $dialogContent.find("input[name='title']");
-         var bodyField = $dialogContent.find("input[name='body']");
+         var nameField = $dialogContent.find("input[name='name']");
+         var phoneField = $dialogContent.find("input[name='phone']");
 
 
          $dialogContent.dialog({
@@ -63,8 +63,8 @@ $(document).ready(function() {
                   id++;
                   calEvent.start = new Date(startField.val());
                   calEvent.end = new Date(endField.val());
-                  calEvent.title = titleField.val();
-                  calEvent.body = bodyField.val();
+                  calEvent.name = nameField.val();
+                  calEvent.phone = phoneField.val();
 					
 					
 					jQuery.ajax({
@@ -109,9 +109,9 @@ $(document).ready(function() {
          resetForm($dialogContent);
          var startField = $dialogContent.find("select[name='start']").val(calEvent.start);
          var endField = $dialogContent.find("select[name='end']").val(calEvent.end);
-         var titleField = $dialogContent.find("input[name='title']").val(calEvent.title);
-         var bodyField = $dialogContent.find("input[name='body']");
-         bodyField.val(calEvent.body);
+         var nameField = $dialogContent.find("input[name='name']").val(calEvent.name);
+         var phoneField = $dialogContent.find("input[name='phone']");
+         phoneField.val(calEvent.phone);
 
          $dialogContent.dialog({
             modal: true,
@@ -126,8 +126,8 @@ $(document).ready(function() {
 
                   calEvent.start = new Date(startField.val());
                   calEvent.end = new Date(endField.val());
-                  calEvent.title = titleField.val();
-                  calEvent.body = bodyField.val();
+                  calEvent.name = nameField.val();
+                  calEvent.phone = phoneField.val();
 
                   $calendar.weekCalendar("updateEvent", calEvent);
                   $dialogContent.dialog("close");
@@ -210,8 +210,8 @@ $(document).ready(function() {
          if (endTime.getTime() === calEvent.end.getTime()) {
             endSelected = "selected=\"selected\"";
          }
-         $startTimeField.append("<option value=\"" + startTime + "\" " + startSelected + ">" + timeslotTimes[i].startFormatted + "</option>");
-         $endTimeField.append("<option value=\"" + startTime + "\" " + endSelected + ">" + timeslotTimes[i].endFormatted + "</option>");
+         $startTimeField.append("<option value=\"" + startTime.getTime() + "\" " + startSelected + ">" + timeslotTimes[i].startFormatted + "</option>");
+         $endTimeField.append("<option value=\"" + endTime.getTime() + "\" " + endSelected + ">" + timeslotTimes[i].endFormatted + "</option>");
 
       }
       $endTimeOptions = $endTimeField.find("option");

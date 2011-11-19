@@ -26,17 +26,17 @@
 						<li><a class="btn1" href="#" title="Dashboard"><span><span>Dashboard</span></span></a></li>
 						<li class="parent">
 							<a class="btn1" href="#" title="My Account"><span><span>My Account</span></span></a>
-							<!-- <ul class="child">
-								<li class="ctop">  </li>
+							<ul class="child">
+								<li class="ctop"><span>&nbsp;</span></li>
 								<li><a href="#" title="Edit company info"><span><span>Edit company info</span></span></a></li>
 								<li><a href="#" title="Manage employees"><span><span>Manage employees</span></span></a></li>
 								<li><a href="#" title="Logout"><span><span>Logout</span></span></a></li>
-								<li class="cbot"> </li>
-							</ul> -->
+								<li class="cbot"></li>
+							</ul>
 						</li>
 						<li class="parent">
 							<a class="btn2" href="#" title="Sign in"><span><span>Sign in</span></span></a>
-							<div class="signin">
+							<div class="signin" style="display: none;">
 								<div class="inr">
 									<form method="post" action="#">
 										<div class="inpt">
@@ -59,7 +59,7 @@
 		<div id="content">
 			<div id="calendar"></div>
 			<div id="event_edit_container">
-				<form>
+				<form id="input_form_event">
 					<input type="hidden" />
 					<ul>
 						<li>
@@ -72,10 +72,10 @@
 							<label for="end">End Time: </label><select name="end"><option value="">Select End Time</option></select>
 						</li>
 						<li>
-							<label for="title">Name: </label><input type="text" name="title" />
+							<label for="name">Name: </label><input type="text" name="name" />
 						</li>
 						<li>
-							<label for="body">Phone: </label><textarea name="body"></textarea>
+							<label for="phone">Phone: </label><input type="text" name="phone" />
 						</li>
 					</ul>
 				</form>

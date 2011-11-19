@@ -426,7 +426,7 @@
                var eventDuration = self._getEventDurationFromPositionedEventElement($weekDay, $newEvent, top);
 
                $newEvent.remove();
-               var newCalEvent = {start: eventDuration.start, end: eventDuration.end, title: options.newEventText};
+               var newCalEvent = {start: eventDuration.start, end: eventDuration.end, name: options.newEventText};
                var $renderedCalEvent = self._renderEvent(newCalEvent, $weekDay,false);
 
                if (!options.allowCalEventOverlap) {
@@ -959,7 +959,7 @@
          var self = this;
          var options = this.options;
          $calEvent.find(".wc-time").html(self._formatDate(calEvent.start, options.timeFormat) + options.timeSeparator + self._formatDate(calEvent.end, options.timeFormat));
-         $calEvent.find(".wc-title").html(calEvent.title);
+         $calEvent.find(".wc-title").html(calEvent.name);
          $calEvent.data("calEvent", calEvent);
       },
 
