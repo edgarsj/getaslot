@@ -6,8 +6,9 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    url(r"^/(?P<slug>[\w-]+)/$", 'getaslot.slots.views.business', name='business'),
-    # url(r'^getaslot/', include('getaslot.foo.urls')),
+	url(r'^$', 'views.index'),
+    url(r"^/(?P<slug>[\w-]+)/$", 'slots.views.business', name='business'),
+
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
