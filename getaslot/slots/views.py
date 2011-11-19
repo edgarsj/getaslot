@@ -28,6 +28,14 @@ def appointments(request, business):
         o['title'] = a.name
         o['name'] = a.name
         o['body'] = a.phone
+        o['phone'] = a.phone
+        
+        # try readonly stuff
+        
+        o['body'] = ''
+        o['title'] = ''
+        o['readOnly'] = True
+        
         o['start'] = a.starttime.isoformat()
         o['end'] = a.endtime.isoformat()
         l.append(o)
@@ -48,9 +56,7 @@ def schedule(request, business, employee_id):
     for a in schedules:
         o = {}
         o['id'] = a.id
-        o['title'] = a.name
-        o['name'] = a.name
-        o['phone'] = a.phone
+        o['title'] = ''
         o['start'] = a.starttime.isoformat()
         o['end'] = a.endtime.isoformat()
         l.append(o)
