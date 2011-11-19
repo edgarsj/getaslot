@@ -6,15 +6,20 @@ $(document).ready(function() {
 
    $calendar.weekCalendar({
       timeslotsPerHour : 1,
+	  timeFormat: "H:i",
+	  use24Hour: true,
       allowCalEventOverlap : false,
       overlapEventsSeparate: false,
       firstDayOfWeek : 1,
 	  timeslotHeight: 40,
       businessHours :{start: 8, end: 18, limitDisplay: true },
       daysToShow : 7,
-      height : function($calendar) {
-         return $(window).height() - $("h1").outerHeight() - 1;
+	  height : 
+	  
+	  function($calendar) {
+         return 495;
       },
+	  
       eventRender : function(calEvent, $event) {
          if (calEvent.end.getTime() < new Date().getTime()) {
             $event.css("backgroundColor", "#aaa");
@@ -220,5 +225,7 @@ $(document).ready(function() {
       }
 
    });
+/**/
+	
 
 });
