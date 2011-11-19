@@ -43,7 +43,7 @@ $(document).ready(function() {
          var startField = $dialogContent.find("select[name='start']").val(calEvent.start);
          var endField = $dialogContent.find("select[name='end']").val(calEvent.end);
          var titleField = $dialogContent.find("input[name='title']");
-         var bodyField = $dialogContent.find("textarea[name='body']");
+         var bodyField = $dialogContent.find("input[name='body']");
 
 
          $dialogContent.dialog({
@@ -62,6 +62,18 @@ $(document).ready(function() {
                   calEvent.end = new Date(endField.val());
                   calEvent.title = titleField.val();
                   calEvent.body = bodyField.val();
+
+				 jQuery.ajax({
+                       type: "POST",
+                       url: "add_appointment/",
+                       data: $("input_form_event").serialize(),
+                      	timeout: (5 * 1000),
+                       async: true,
+                       success: function(data) {
+                           alert(data);
+                       }
+                   });
+
 
                   $calendar.weekCalendar("removeUnsavedEvents");
                   $calendar.weekCalendar("updateEvent", calEvent);
@@ -92,7 +104,7 @@ $(document).ready(function() {
          var startField = $dialogContent.find("select[name='start']").val(calEvent.start);
          var endField = $dialogContent.find("select[name='end']").val(calEvent.end);
          var titleField = $dialogContent.find("input[name='title']").val(calEvent.title);
-         var bodyField = $dialogContent.find("textarea[name='body']");
+         var bodyField = $dialogContent.find("input[name='body']");
          bodyField.val(calEvent.body);
 
          $dialogContent.dialog({
@@ -137,7 +149,8 @@ $(document).ready(function() {
       },
       noEvents : function() {
 
-      }
+      },
+	data: "appointments/"
        
 
       
@@ -148,30 +161,6 @@ $(document).ready(function() {
       $dialogContent.find("textarea").val("");
    }
 
-   function getEventData() {
-      var year = new Date().getFullYear();
-      var month = new Date().getMonth();
-      var day = new Date().getDate();
-
-      return {
-         events : [
-            {
-               "id":1,
-               "start": new Date(year, month, day, 12),
-               "end": new Date(year, month, day, 13, 00),
-               "title":"Lunch with Mike"
-            },
-            {
-               "id":6,
-               "start": new Date(year, month, day, 10),
-               "end": new Date(year, month, day, 11),
-               "title":"I'm read-only",
-               readOnly : true
-            }
-
-         ]
-      };
-   }
 
 
    /*
@@ -203,40 +192,29 @@ $(document).ready(function() {
    var $endTimeOptions = $endTimeField.find("option");
 
    //reduces the end time options to be only after the start time options.
-   $("select[name='start']").change(function() {
-      var startTime = $(this).find(":selected").val();
-      var currentEndTime = $endTimeField.find("option:selected").val();
-      $endTimeField.html(
-            $endTimeOptions.filter(function() {
-               return startTime < $(this).val();
-            })
-            );
+   // $("select[name='start']").change(function() {
+   //      var startTime = $(this).find(":selected").val();
+   //      var currentEndTime = $endTimeField.find("option:selected").val();
+   //      $endTimeField.html(
+   //            $endTimeOptions.filter(function() {
+   //               return startTime < $(this).val();
+   //            })
+   //            );
+   // 
+   //      var endTimeSelected = false;
+   //      $endTimeField.find("option").each(function() {
+   //         if ($(this).val() === currentEndTime) {
+   //            $(this).attr("selected", "selected");
+   //            endTimeSelected = true;
+   //            return false;
+   //         }
+   //      });
+   // 
+   //      if (!endTimeSelected) {
+   //         //automatically select an end date 2 slots away.
+   //         $endTimeField.find("option:eq(1)").attr("selected", "selected");
+   //      }
+   // 
+   //   });
 
-      var endTimeSelected = false;
-      $endTimeField.find("option").each(function() {
-         if ($(this).val() === currentEndTime) {
-            $(this).attr("selected", "selected");
-            endTimeSelected = true;
-            return false;
-         }
-      });
-
-      if (!endTimeSelected) {
-         //automatically select an end date 2 slots away.
-         $endTimeField.find("option:eq(1)").attr("selected", "selected");
-      }
-
-   });
-
-		$('#example-4').click(function(){                    // вешаем на клик по элементу с id = example-4
-			$.getJSON('ajax/example.json', {}, function(json){  // загрузку JSON данных из файла example.json
-				$('#example-4').html('');
-															 // заполняем DOM элемент данными из JSON объекта
-				$('#example-4').append('To: '   + json.note.to + '<br/>')
-							   .append('From: ' + json.note.from + '<br/>')
-							   .append('<b>'    + json.note.heading + '</b><br/>')
-							   .append(           json.note.body + '<br/>');
-			});
-		})
-	
 });
