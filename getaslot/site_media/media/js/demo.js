@@ -23,16 +23,17 @@ $(document).ready(function() {
       },
 	  
       eventRender : function(calEvent, $event, schedule) {
-         if (calEvent.end.getTime() < new Date().getTime()) {
 			if (schedule == true)
 				$event.css("backgroundColor", "#cccccc");
-            else
-				$event.css("backgroundColor", "#e05034");
+			else {
+         if (calEvent.end.getTime() < new Date().getTime()) {
+			$event.css("backgroundColor", "#e05034");
             $event.find(".wc-time").css({
                "backgroundColor" : "#999",
                "border" : "1px solid #888"
             });
-         }
+         } 
+}
       },
       draggable : function(calEvent, $event) {
          return calEvent.readOnly == false;
