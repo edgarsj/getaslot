@@ -75,12 +75,14 @@ $(document).ready(function() {
 						timeout: (5 * 1000),
 						async: true,
 						success: function(data) {
-							alert(data);
+							//alert(data);
+							$calendar.weekCalendar("removeUnsavedEvents");
+							if (data == "OK") {
+								$calendar.weekCalendar("updateEvent", calEvent);
+							}
 						}
 					});
 
-                  $calendar.weekCalendar("removeUnsavedEvents");
-                  $calendar.weekCalendar("updateEvent", calEvent);
                   $dialogContent.dialog("close");
                },
                cancel : function() {
