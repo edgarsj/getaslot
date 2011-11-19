@@ -146,7 +146,8 @@ border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;
 #footer {padding: 0 0 10px;}
 .g48 {width: 100px;height: 45px;float: right;margin: 5px 0 0;}
 
-#employee label {font-size: 13px;font-weight: bold;color: #000;}
+.dropdown label {font-size: 13px;font-weight: bold;color: #000;float: left;margin: 6px 10px 0 0;}
+.dropdown select {float: left;}
 
 /* startpage */
 .home h1 {font-size: 20px;color: #040404;}
