@@ -211,8 +211,8 @@ $(document).ready(function() {
          if (endTime.getTime() === calEvent.end.getTime()) {
             endSelected = "selected=\"selected\"";
          }
-         $startTimeField.append("<option value=\"" + startTime.getTime() + "\" " + startSelected + ">" + timeslotTimes[i].startFormatted + "</option>");
-         $endTimeField.append("<option value=\"" + endTime.getTime() + "\" " + endSelected + ">" + timeslotTimes[i].endFormatted + "</option>");
+         $startTimeField.append("<option value=\"" + (startTime.getTime()/1000) + "\" " + startSelected + ">" + timeslotTimes[i].startFormatted + "</option>");
+         $endTimeField.append("<option value=\"" + (endTime.getTime()/1000) + "\" " + endSelected + ">" + timeslotTimes[i].endFormatted + "</option>");
 
       }
       $endTimeOptions = $endTimeField.find("option");
