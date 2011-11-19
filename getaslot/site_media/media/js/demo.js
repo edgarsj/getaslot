@@ -66,11 +66,10 @@ $(document).ready(function() {
                   calEvent.name = nameField.val();
                   calEvent.phone = phoneField.val();
 					
-					
 					jQuery.ajax({
 						type: "POST",
-						url: "add_appointment/",
-						data: $("input_form_event").serialize(),
+						url: "add_appointment/1/",
+						data: $("#input_form_event").serialize(),
 						timeout: (5 * 1000),
 						async: true,
 						success: function(data) {
