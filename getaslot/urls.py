@@ -7,6 +7,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
 	url(r'^$', 'views.index'),
+	url(r'^about/', 'views.about'),
     url(r"^/(?P<slug>[\w-]+)/$", 'slots.views.business', name='business'),
 
 
