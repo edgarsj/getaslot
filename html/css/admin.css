@@ -51,14 +51,15 @@ blockquote, q {
 /****** GENERAL(gecko ff3 win) ******/
 
 /* Typography */
+body {background: url(../images/design/bg.png) repeat;font-size: 12px;font-family: Myriad Pro, Helvetica, Arial, sans-serif;}
 
 .clear {	clear: both;}
 
 /* basic structure */
 #header {width: 960px;margin: 0 auto;}
 #header .inr {position: relative;}
-#content {width: 960px;margin: 0 auto;}
-#footer {width: 960px;margin: 0 auto;border: 1px solid #ddd;min-height: 50px;}
+#content {width: 960px;margin: 0 auto;min-height: 500px;}
+#footer {width: 960px;margin: 0 auto;min-height: 50px;}
 
 /* top menu */
 .topmenu {position: absolute;top: 26px;right: 0;}
@@ -69,11 +70,45 @@ blockquote, q {
 .btn1 > span {background: url(../images/design/btn_sprite.png) no-repeat right -30px;height: 28px;display: block;}
 .btn1 > span > span {display: block;padding: 5px 12px 0 9px;color: #fff;text-shadow: #8f3e2c 1px 1px 1px;}
 
+.btn1.active {background-position: 0 -120px;}
+.btn1.active > span {background-position: right -150px;}
+
 .btn2 {background: url(../images/design/btn_sprite.png) no-repeat 0 -60px;padding-left: 3px;display: block;}
 .btn2 > span {background: url(../images/design/btn_sprite.png) no-repeat right -90px;height: 28px;display: block;}
 .btn2 > span > span {display: block;padding: 5px 12px 0 9px;color: #fff;text-shadow: #8f3e2c 1px 1px 1px;}
 
+.btn2.active {background-position: 0 -180px;}
+.btn2.active > span {background-position: right -210px;}
+
 .parent > a > span > span {background: url(../images/design/parent.png) no-repeat right 10px;padding: 5px 34px 0 9px;}
+.parent > a.btn2.active > span > span {background: url(../images/design/parent2.png) no-repeat right 10px;}
+
+.topmenu .child {width: 197px;margin: 10px 0 0;
+-moz-box-shadow: 0px 0px 2px #2d2d2d;
+-webkit-box-shadow: 0px 0px 2px #2d2d2d;
+box-shadow: 0px 0px 2px #2d2d2d;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 5px;
+}
+.topmenu .parent .ctop {display: block;background: #e36245;position: relative;height: 7px;width: 100%;border-bottom: 1px solid #ba5039;
+-moz-border-radius-topleft: 5px;-moz-border-radius-topright: 5px;
+-webkit-border-top-left-radius: 5px;-webkit-border-top-right-radius: 5px;
+border-top-left-radius: 5px;border-top-right-radius: 5px;
+}
+.topmenu .parent .ctop span {background: url(../images/design/ul2top.png) no-repeat 0 0;display: block;position: absolute;top: -8px;right: 32px;width: 14px;height: 13px;}
+.topmenu .parent .cbot {display: block;background: #e36245;height: 7px;width: 100%;border-top: 1px solid #ba5039;border-bottom: 0 none;
+-moz-border-radius-bottomleft: 5px;-moz-border-radius-bottomright: 5px;
+-webkit-border-bottom-left-radius: 5px;-webkit-border-bottom-right-radius: 5px;
+border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;
+}
+.topmenu .parent li {border-bottom: 1px solid #fff;}
+
+
+.topmenu .child li {margin: 0;width: 100%;}
+.topmenu .child a {display: block;background: #f6cbba;width: 100%;}
+.topmenu .child a span span {color: #2a2a2a;display: block;padding: 4px 5px;}
+.topmenu .child a:hover span span, .topmenu .child a.active span span {color: #fff;background: #e98770;}
 
 /* signin */
 .topmenu .signin {background: url(../images/design/sibg.png) no-repeat 0 0;width: 277px;height: 160px;position: absolute;top: 31px;right: 0;z-index: 9999;}
@@ -85,10 +120,9 @@ blockquote, q {
 .signin .submit span {display: block;padding: 7px 0 0;text-align: center;}
 
 /* custom callendar css */
-body {background: url(../images/design/bg.png) repeat;font-size: 12px;}
-.bcknd #header {width: 100%;border-top: 8px solid #262626;}
-.bcknd #header > .inr {width: 960px;margin: 0 auto;min-height: 65px;}
-.bcknd .logo {padding: 25px 0 0 29px;width: 350px;}
+#header {width: 100%;border-top: 8px solid #262626;}
+#header > .inr {width: 960px;margin: 0 auto;min-height: 65px;}
+.logo {padding: 25px 0 0 29px;width: 350px;}
 
 #calendar .wc-top {background: #e36245;height: 14px;border-bottom: 1px solid #ba5039;margin: 0 0 0 17px;
 -moz-border-radius-topleft: 10px;-moz-border-radius-topright: 10px;
@@ -112,7 +146,10 @@ border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;
 #footer {padding: 0 0 10px;}
 .g48 {width: 100px;height: 45px;float: right;margin: 5px 0 0;}
 
-
+/* startpage */
+.home h1 {font-size: 20px;color: #040404;}
+.home p {font-size: 15px;color: #040404;}
+.home .offers {float: left;width: 455px;}
 
 
 
