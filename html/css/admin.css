@@ -62,17 +62,21 @@ blockquote, q {
 
 /* custom callendar css */
 body {background: url(../images/design/bg.png) repeat;}
-#calendar .wc-top {background: #e36245;height: 14px;border-bottom: 1px solid #ba5039;
+#calendar .wc-top {background: #e36245;height: 14px;border-bottom: 1px solid #ba5039;margin: 0 0 0 17px;
 -moz-border-radius-topleft: 10px;-moz-border-radius-topright: 10px;
 -webkit-border-top-left-radius: 10px;-webkit-border-top-right-radius: 10px;
 border-top-left-radius: 10px;border-top-right-radius: 10px;
 }
 
-#calendar .wc-bot {background: #e36245;height: 14px;border-top: 1px solid #ba5039;
+#calendar .wc-bot {background: #e36245;height: 14px;border-top: 1px solid #ba5039;margin: 0 0 0 17px;
 -moz-border-radius-bottomleft: 10px;-moz-border-radius-bottomright: 10px;
 -webkit-border-bottom-left-radius: 10px;-webkit-border-bottom-right-radius: 10px;
 border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;
 }
+
+.wc-header {margin: 0 0 0 17px;width: 943px;}
+.wc-business-hours {margin: 0 0 0 55px;border-bottom: 1px solid #d7d6ca;}
+.wc-hour-end, .wc-hour-header {border-bottom: 1px solid #d7d6ca;}
 
 
 
