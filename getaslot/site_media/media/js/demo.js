@@ -240,7 +240,7 @@ $(document).ready(function() {
 	/**/
         $.get( location+"appointments/",  function(data){ 
 			var datastring =  data.substring(1,-1);
-			var db = $.parseJSON(datastring);
+			var db = jQuery.parseJSON(datastring);
            	alert(getKeys(db)); 		
 		});
 		
