@@ -1,7 +1,47 @@
 @charset "utf-8";
-/*RESET*/
-* {margin: 0;}
-ul,ol {list-style-type:none;}
+
+/* RESET */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { 
+	margin:0;
+	padding:0;
+}
+a {
+	text-decoration: none;
+}
+ol, ul, dir, menu {
+	list-style: none;
+	list-style-type: none;
+}
+fieldset,img,abbr,acronym,input { 
+	border:0;
+	outline: 0;
+}
+address,caption,cite,code,dfn,em,strong,th,var {
+	font-style:normal;
+	font-weight:normal;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+caption, th, td {
+	font-weight: normal;
+	text-align: left;
+}
+h1,h2,h3,h4,h5,h6 {
+	font-size:100%;
+	font-weight:normal;
+}
+:focus {
+	outline: 0;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+	content: "";
+}
+blockquote, q {
+	quotes: "" "";
+}
+
 
 /*Main */
 body {
@@ -14,26 +54,30 @@ body {
 #logo_main img {width: 100%;}
 
 /*about*/
-#logo img {height:75px; margin: 10px 0 10px;}
+#logo {margin: 10px 0 10px;}
 #user, #corporative { border:1px solid black; margin:0 1px 0; }
-#main img {margin: 10px 0 10px;}
-#follow {margin: 70px   0 0 ; }
+#main img {margin: 2px 0 16px;}
+#main.grid_6 {margin-left: 0;}
+#follow {margin: 64px   0 0 ; }
+#follow img {margin: 0 0 0 98px;}
 
-.thumb_79 { margin: 10px;}
+.thumb_79 {margin: 10px 0 1px;}
 .thumb_79 img {width: 79px;}
+
+.about #sidebar {margin: 14px 0 0 82px;width: 400px;}
+.about #sidebar img {margin: 0 0 0 6px;}
+.about #creators {margin: 4px 0 0;}
 
 /*calendar*/
 
 #event_edit_container { display:none;}
 
 /*Styling*/
-.story{background: url(../images/design/line.png) top;  font-family: Arial, Helvetica, sans-serif; line-height:31px; color:#38373a;} 
+.story{background: url(../images/design/line.png) repeat 0 bottom;  font-family: Arial, Helvetica, sans-serif; line-height:31px; color:#38373a;} 
 .descr{font-family: Helvetica,Arial, sans-serif; font-size:14px; color:#97959c; padding: 20px 0 0 99px ;}
-.descr span { font-weight:bold; font-size: 18px; color:#3b3b3b;}
-.support {color:#97959c !important; font-size: 14px; }
+.descr span { font-weight:bold; font-size: 18px; color:#3b3b3b;display: block;margin: 7px 0 0;}
+.support {color:#97959c !important; font-size: 14px;line-height: 18px;}
 /*Support*/
 .center {text-align: center; }
 .left{float:left; }
-.clear {
-	clear:both;
-}
+.clear {clear:both;}
