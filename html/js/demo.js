@@ -6,6 +6,8 @@ $(document).ready(function() {
 
    $calendar.weekCalendar({
       timeslotsPerHour : 1,
+	  timeFormat: "H:i",
+	  use24Hour: true,
       allowCalEventOverlap : false,
       overlapEventsSeparate: false,
       firstDayOfWeek : 1,
@@ -223,5 +225,7 @@ $(document).ready(function() {
       }
 
    });
+/**/
+	
 
 });
