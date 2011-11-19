@@ -238,7 +238,12 @@ $(document).ready(function() {
 	   return keys;
 	}
 	/**/
-        $.getJSON(location+"appointments/", {}, function(json){  
-           alert(getKeys(json));
+        $.ajax({
+		 url: location+"appointments/", 
+		 context: document.body,
+  		 success: function(data ){ 
+           	alert(getKeys(data));
+		 		}
 		});
+		
 });
