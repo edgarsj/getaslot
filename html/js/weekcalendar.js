@@ -1325,7 +1325,7 @@
             return true;
          },
          eventClick : function() {
-         },
+			},
          eventRender : function(calEvent, element) {
             return element;
          },

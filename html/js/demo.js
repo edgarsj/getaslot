@@ -14,10 +14,11 @@ $(document).ready(function() {
 	  timeslotHeight: 40,
       businessHours :{start: 8, end: 18, limitDisplay: true },
       daysToShow : 7,
+	  
 	  height : 
 	  
 	  function($calendar) {
-         return 495;
+         return 501;
       },
 	  
       eventRender : function(calEvent, $event) {
@@ -190,7 +191,7 @@ $(document).ready(function() {
             endSelected = "selected=\"selected\"";
          }
          $startTimeField.append("<option value=\"" + startTime + "\" " + startSelected + ">" + timeslotTimes[i].startFormatted + "</option>");
-         $endTimeField.append("<option value=\"" + endTime + "\" " + endSelected + ">" + timeslotTimes[i].endFormatted + "</option>");
+         $endTimeField.append("<option value=\"" + startTime + "\" " + endSelected + ">" + timeslotTimes[i].endFormatted + "</option>");
 
       }
       $endTimeOptions = $endTimeField.find("option");
@@ -225,7 +226,6 @@ $(document).ready(function() {
       }
 
    });
-/**/
-	
-
+ 	//var ss = $calendar.weekCalendar("getData",); 
+	//alert (ss);
 });
