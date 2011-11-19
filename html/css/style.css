@@ -78,6 +78,6 @@ body {
 .descr span { font-weight:bold; font-size: 18px; color:#3b3b3b;display: block;margin: 7px 0 0;}
 .support {color:#97959c !important; font-size: 14px;line-height: 18px;}
 /*Support*/
-.center {text-align: center; }
-.left{float:left; }
+.center {text-align: center;}
+.left{float:left;}
 .clear {clear:both;}
