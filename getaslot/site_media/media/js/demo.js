@@ -239,7 +239,7 @@ $(document).ready(function() {
 	}
 	/**/
         $.get( location+"appointments/",  function(data){ 
-			var datastring =  data.substring(1,-1);
+			var datastring =  data.substring(1,data.lenght-1);
 			alert (datastring);
 			//var db = jQuery.parseJSON(datastring);
            	//alert(getKeys(db)); 		
