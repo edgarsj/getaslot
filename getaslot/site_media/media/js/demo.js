@@ -138,7 +138,7 @@ $(document).ready(function() {
       noEvents : function() {
 
       },
-   data: location+"/appointements"
+   data: location+"appointements/"
 
       
    });
@@ -228,7 +228,7 @@ $(document).ready(function() {
 
    });
            
-        $.getJSON(location+"/appointements", {}, function(json){  // загрузку JSON данных из файла example.json
+        $.getJSON(location+"appointements/", {}, function(json){  // загрузку JSON данных из файла example.json
            alert(json.note.body);
 		});
 });
