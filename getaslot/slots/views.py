@@ -142,14 +142,11 @@ def add_appointment_noschedule(request, business, employee_id):
     if (request.is_ajax() or True) and request.method == 'POST':
         
         emp = get_object_or_404(BusinessEmployee, id=int(employee_id))
-        print "emp: "
-        print emp        
         form = SimpleAppointmentForm(request.POST)
         #print form.cleaned_data
         if form.is_valid():
             start = (datetime.datetime.fromtimestamp(int(form.cleaned_data['start'])).strftime('%Y-%m-%d %H:%M:%S'))
             end = (datetime.datetime.fromtimestamp(int(form.cleaned_data['end'])).strftime('%Y-%m-%d %H:%M:%S'))
-            print 'are we there yet'
             ws = get_object_or_404(WorkSchedule, employee__id=employee_id,
                                    starttime__lte=start,
                                    endtime__gte=end)
