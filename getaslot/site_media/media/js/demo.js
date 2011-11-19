@@ -43,7 +43,7 @@ $(document).ready(function() {
          var startField = $dialogContent.find("select[name='start']").val(calEvent.start);
          var endField = $dialogContent.find("select[name='end']").val(calEvent.end);
          var titleField = $dialogContent.find("input[name='title']");
-         var bodyField = $dialogContent.find("textarea[name='body']");
+         var bodyField = $dialogContent.find("input[name='body']");
 
 
          $dialogContent.dialog({
@@ -92,7 +92,7 @@ $(document).ready(function() {
          var startField = $dialogContent.find("select[name='start']").val(calEvent.start);
          var endField = $dialogContent.find("select[name='end']").val(calEvent.end);
          var titleField = $dialogContent.find("input[name='title']").val(calEvent.title);
-         var bodyField = $dialogContent.find("textarea[name='body']");
+         var bodyField = $dialogContent.find("input[name='body']");
          bodyField.val(calEvent.body);
 
          $dialogContent.dialog({
