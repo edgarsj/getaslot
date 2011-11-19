@@ -143,10 +143,9 @@ def add_appointment_noschedule(request, business, employee_id):
         
         emp = get_object_or_404(BusinessEmployee, id=int(employee_id))
         form = SimpleAppointmentForm(request.POST)
-        #print form.cleaned_data
         if form.is_valid():
-            start = (datetime.datetime.fromtimestamp(int(form.cleaned_data['start'])).strftime('%Y-%m-%d %H:%M:%S'))
-            end = (datetime.datetime.fromtimestamp(int(form.cleaned_data['end'])).strftime('%Y-%m-%d %H:%M:%S'))
+            start = datetime.datetime.fromtimestamp(int(form.cleaned_data['start']))
+            end = datetime.datetime.fromtimestamp(int(form.cleaned_data['end']))
             ws = get_object_or_404(WorkSchedule, employee__id=employee_id,
                                    starttime__lte=start,
                                    endtime__gte=end)
@@ -155,9 +154,11 @@ def add_appointment_noschedule(request, business, employee_id):
             ap.work_schedule = ws
             ap.name = form.cleaned_data['name']
             ap.phone = form.cleaned_data['phone']
-            ap.starttime = form.cleaned_data['start']
-            ap.endtime = form.cleaned_data['end']
+            ap.starttime = start
+            ap.endtime = end
             ap.save()
+            mimetype = 'application/javascript'
+            return HttpResponse('OK',mimetype)
         mimetype = 'application/javascript'        
-        return HttpResponse('OK',mimetype)
+        return HttpResponse('ERROR',mimetype)
     return HttpResponse(status=400)
