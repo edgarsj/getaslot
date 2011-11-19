@@ -238,8 +238,10 @@ $(document).ready(function() {
 	   return keys;
 	}
 	/**/
+	var db = new Object();
         $.get( location+"appointments/",  function(data){ 
-           	alert(data); 		
+			db = $.parseJSON(data.substring(1,-1))
+           	alert(getKeys(db)); 		
 		});
 		
 });
