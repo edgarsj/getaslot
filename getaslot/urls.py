@@ -22,7 +22,7 @@ urlpatterns = patterns('',
     url(r"^(?P<business>[\w-]+)/appointments/$", 'slots.views.appointments', name="business_appointments"),
 	url(r"^(?P<business>[\w-]+)/schedule/$", 'slots.views.busy',{'employee_id':'1'}, name="business_schedule"),
     url(r"^(?P<business>[\w-]+)/schedule/(?P<employee_id>\d+)$", 'slots.views.busy', name="business_schedule_employee"),
-    url(r"^(?P<business>[\w-]+)/add_appointment/(?P<employee_id>\d+)$", 'slots.views.add_appointment_noschedule', name="add_appointment_employee"),
+    url(r"^(?P<business>[\w-]+)/add_appointment/(?P<employee_id>\d+)/$", 'slots.views.add_appointment_noschedule', name="add_appointment_employee"),
 )
 
 urlpatterns += staticfiles_urlpatterns()

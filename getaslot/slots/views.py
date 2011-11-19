@@ -6,6 +6,8 @@ from django.core import serializers
 from django.template import RequestContext
 from django.http import HttpResponse
 from django import forms
+from django.views.decorators.csrf import csrf_exempt
+
 
 BUSINESS_HOURS_FROM = 8
 BUSINESS_HOURS_TO = 20
@@ -118,6 +120,7 @@ class SimpleAppointmentForm(forms.Form):
     name = forms.CharField(max_length=200)
     phone = forms.CharField(max_length=200)
 
+@csrf_exempt
 def add_appointment(request, work_schedule_id):
     if (request.is_ajax() or True) and request.method == 'POST':
         ws = get_object_or_404(WorkSchedule, id=work_schedule_id)
@@ -134,14 +137,22 @@ def add_appointment(request, work_schedule_id):
         return HttpResponse('OK',mimetype)
     return HttpResponse(status=400)
 
-def add_appointment_noschedule(request, employee_id):
+@csrf_exempt
+def add_appointment_noschedule(request, business, employee_id):
     if (request.is_ajax() or True) and request.method == 'POST':
-        emp = get_object_or_404(BusinessEmployee, id=employee_id)        
+        
+        emp = get_object_or_404(BusinessEmployee, id=int(employee_id))
+        print "emp: "
+        print emp        
         form = SimpleAppointmentForm(request.POST)
+        #print form.cleaned_data
         if form.is_valid():
+            start = (datetime.datetime.fromtimestamp(int(form.cleaned_data['start'])).strftime('%Y-%m-%d %H:%M:%S'))
+            end = (datetime.datetime.fromtimestamp(int(form.cleaned_data['end'])).strftime('%Y-%m-%d %H:%M:%S'))
+            print 'are we there yet'
             ws = get_object_or_404(WorkSchedule, employee__id=employee_id,
-                                   starttime__lte=form.cleaned_data['start'],
-                                   endtime__gte=form.cleaned_data['end'])
+                                   starttime__lte=start,
+                                   endtime__gte=end)
             #ap = Appointment(work_schedule)
             ap = Appointment()
             ap.work_schedule = ws
