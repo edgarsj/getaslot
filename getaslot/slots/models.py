@@ -78,4 +78,4 @@ class Appointment(models.Model):
                       )
     def save(self, **kwargs):
         self.day = self.starttime.date()
-        super(WorkSchedule, self).save(**kwargs)
+        super(Appointment, self).save(**kwargs)
