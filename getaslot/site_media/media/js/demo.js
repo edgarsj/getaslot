@@ -62,6 +62,21 @@ $(document).ready(function() {
                   calEvent.end = new Date(endField.val());
                   calEvent.title = titleField.val();
                   calEvent.body = bodyField.val();
+					
+					
+					jQuery.ajax({
+						type: "POST",
+						url: "add_appointment/",
+						data: $("input_form_event").serialize(),
+						timeout: (5 * 1000),
+						async: true,
+						success: function(data) {
+							alert(data);
+						}
+					});
+
+				 
+
 
                   $calendar.weekCalendar("removeUnsavedEvents");
                   $calendar.weekCalendar("updateEvent", calEvent);

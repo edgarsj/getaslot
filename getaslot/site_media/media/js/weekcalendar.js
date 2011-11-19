@@ -469,6 +469,7 @@
             jsonOptions[options.startParam || 'start'] = Math.round(weekStartDate.getTime() / 1000);
             jsonOptions[options.endParam || 'end'] = Math.round(weekEndDate.getTime() / 1000);
             $.getJSON(options.data, jsonOptions, function(data) {
+				
                self._renderEvents(data, $weekDayColumns);
                if (options.loading) options.loading(false);
             });
@@ -565,7 +566,7 @@
 
 
          $.each(eventsToRender, function(i, calEvent) {
-
+			
             var $weekDay = self._findWeekDayForEvent(calEvent, $weekDayColumns);
 
             if ($weekDay) {
@@ -1306,7 +1307,7 @@
          businessHours : {start: 8, end: 18, limitDisplay : false},
          newEventText : "New Event",
          timeslotHeight: 20,
-         defaultEventLength : 2,
+         defaultEventLength : 1,
          timeslotsPerHour : 4,
          buttons : true,
          buttonText : {
