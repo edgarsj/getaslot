@@ -23,6 +23,7 @@ $(document).ready(function() {
       },
 	  
       eventRender : function(calEvent, $event, schedule) {
+		$event.css("backgroundColor", "#e05034");
 			if (schedule == true)
 				$event.css("backgroundColor", "#cccccc");
 			else {
