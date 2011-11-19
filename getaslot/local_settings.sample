@@ -1,0 +1,26 @@
+
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, "site_media", "media")
+
+# URL that handles the media served from MEDIA_ROOT.
+# Example: "http://media.lawrence.com"
+MEDIA_URL = "/site_media/media/"
+
+#STATIC_ROOT = os.path.join(PROJECT_ROOT, "site_media", "static")
+#STATIC_URL = "/site_media/static/"
+
+STATICFILES_DIRS = [
+    os.path.join(PROJECT_ROOT, "media"),
+    os.path.join(PINAX_ROOT, "media", PINAX_THEME),
+]
+
+ADMIN_MEDIA_PREFIX = posixpath.join(STATIC_URL, "admin/")
+
+
+TEMPLATE_DIRS = [
+    os.path.join(PROJECT_ROOT, "templates"),
+    os.path.join(PINAX_ROOT, "templates", PINAX_THEME),
+]
+DEFAULT_FROM_EMAIL = 'no-reply@getaslot.com'
+SERVER_EMAIL = 'web-no-reply@getaslot.com'
+CONTACT_EMAIL = slots@getaslot.com"
+EMAIL_SUBJECT_PREFIX = '[Getaslot]'
