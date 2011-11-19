@@ -302,7 +302,7 @@
          }
 
          //render calendar header
-         calendarHeaderHtml = "<table class=\"wc-header\"><tbody><tr><td class=\"wc-time-column-header\"></td>";
+         calendarHeaderHtml = "<div class=\"wc-top\"></div> <table class=\"wc-header\"><tbody><tr><td class=\"wc-time-column-header\"></td>";
          for (var i = 1; i <= options.daysToShow; i++) {
             calendarHeaderHtml += "<td class=\"wc-day-column-header wc-day-" + i + "\"></td>";
          }
@@ -348,7 +348,7 @@
             calendarBodyHtml += "<td class=\"wc-day-column day-" + i + "\"><div class=\"wc-day-column-inner\"></div></td>"
          }
 
-         calendarBodyHtml += "</tr></tbody></table></div>";
+         calendarBodyHtml += "</tr></tbody></table><div class=\"wc-bot\"></div></div>";
 
          //append all calendar parts to container
          $(calendarHeaderHtml + calendarBodyHtml).appendTo($calendarContainer);
