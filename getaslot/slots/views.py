@@ -75,7 +75,7 @@ def busy(request, business, employee_id):
         o = {}
         o['id'] = a.id
         o['title'] = ''
-        o['start'] = datetime.datetime.combine(a.day,datetime.time(BUSINESS_HOURS_FROM))
+        o['start'] = datetime.datetime.combine(a.day,datetime.time(BUSINESS_HOURS_FROM)).isoformat()
         o['end'] = a.starttime.isoformat()
         o['readOnly'] = True
         l.append(o)
@@ -93,7 +93,7 @@ def busy(request, business, employee_id):
         o['id'] = a.id
         o['title'] = ''
         o['start'] = a.starttime.isoformat()
-        o['end'] = datetime.datetime.combine(a.day,datetime.time(BUSINESS_HOURS_TO))
+        o['end'] = datetime.datetime.combine(a.day,datetime.time(BUSINESS_HOURS_TO)).isoformat()
         o['readOnly'] = True
         l.append(o)
             
