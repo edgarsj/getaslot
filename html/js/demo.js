@@ -5,12 +5,13 @@ $(document).ready(function() {
    var id = 10;
 
    $calendar.weekCalendar({
-      timeslotsPerHour : 4,
+      timeslotsPerHour : 1,
       allowCalEventOverlap : true,
       overlapEventsSeparate: true,
       firstDayOfWeek : 1,
       businessHours :{start: 8, end: 18, limitDisplay: true },
       daysToShow : 7,
+	  timeslotHeight: 40,
       height : function($calendar) {
          return $(window).height() - $("h1").outerHeight() - 1;
       },
@@ -30,7 +31,6 @@ $(document).ready(function() {
          return calEvent.readOnly != true;
       },
       eventNew : function(calEvent, $event) {
-		  return;
          var $dialogContent = $("#event_edit_container");
          resetForm($dialogContent);
          var startField = $dialogContent.find("select[name='start']").val(calEvent.start);
@@ -76,7 +76,7 @@ $(document).ready(function() {
       eventResize : function(calEvent, $event) {
       },
       eventClick : function(calEvent, $event) {
-			
+
          if (calEvent.readOnly) {
             return;
          }
@@ -141,7 +141,7 @@ $(document).ready(function() {
       $dialogContent.find("input").val("");
       $dialogContent.find("textarea").val("");
    }
-/* Event create*/
+
    function getEventData() {
       var year = new Date().getFullYear();
       var month = new Date().getMonth();
@@ -153,7 +153,7 @@ $(document).ready(function() {
                "id":1,
                "start": new Date(year, month, day, 12),
                "end": new Date(year, month, day, 13, 30),
-               "title":"Make a job"
+               "title":"Lunch with Mike"
             },
             {
                "id":2,
@@ -246,7 +246,7 @@ $(document).ready(function() {
 
    });
 
-/*
+
    var $about = $("#about");
 
    $("#about_button").click(function() {
@@ -265,5 +265,5 @@ $(document).ready(function() {
       }).show();
    });
 
-*/
+
 });

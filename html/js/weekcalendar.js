@@ -383,7 +383,8 @@
 
                var $newEvent = $("<div class=\"wc-cal-event wc-new-cal-event wc-new-cal-event-creating\"></div>");
 
-               $newEvent.css({lineHeight: (options.timeslotHeight - 2) + "px", fontSize: (options.timeslotHeight / 2) + "px"});
+               /* $newEvent.css({lineHeight: (options.timeslotHeight - 2) + "px", fontSize: (options.timeslotHeight / 2) + "px"}); */
+               $newEvent.css({lineHeight: (options.timeslotHeight - 2) + "px" });
                $target.append($newEvent);
 
                var columnOffset = $target.offset().top;
@@ -608,7 +609,8 @@
          $calEvent = $(eventHtml);
          $modifiedEvent = options.eventRender(calEvent, $calEvent);
          $calEvent = $modifiedEvent ? $modifiedEvent.appendTo($weekDay) : $calEvent.appendTo($weekDay);
-         $calEvent.css({lineHeight: (options.timeslotHeight - 2) + "px", fontSize: (options.timeslotHeight / 2) + "px"});
+         /* $calEvent.css({lineHeight: (options.timeslotHeight - 2) + "px", fontSize: (options.timeslotHeight / 2) + "px"}); */
+         $calEvent.css({lineHeight: (options.timeslotHeight - 2) + "px" });
 
          self._refreshEventDetails(calEvent, $calEvent);
          self._positionEvent($weekDay, $calEvent);
