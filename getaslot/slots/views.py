@@ -27,7 +27,7 @@ def appointments(request, business):
         o['id'] = a.id
         o['title'] = a.name
         o['name'] = a.name
-        o['phone'] = a.phone
+        o['body'] = a.phone
         o['start'] = a.starttime.isoformat()
         o['end'] = a.endtime.isoformat()
         l.append(o)
