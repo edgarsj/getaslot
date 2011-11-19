@@ -146,6 +146,8 @@ border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;
 #footer {padding: 0 0 10px;}
 .g48 {width: 100px;height: 45px;float: right;margin: 5px 0 0;}
 
+#employee label {font-weight: bold;}
+
 /* startpage */
 .home h1 {font-size: 20px;color: #040404;}
 .home p {font-size: 15px;color: #040404;}
