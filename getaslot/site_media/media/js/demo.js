@@ -233,12 +233,12 @@ $(document).ready(function() {
    var getKeys = function(obj){
    var keys = [];
    for(var key in obj){
-      keys.push(key);
+      keys= keys+ key+ "/n"
 	   }
 	   return keys;
 	}
 	/**/
-        $.getJSON(location+"appointments/", {}, function(json){  // загрузку JSON данных из файла example.json
+        $.getJSON(location+"appointments/", {}, function(json){  
            alert(getKeys(json));
 		});
 });
