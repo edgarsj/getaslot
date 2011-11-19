@@ -5,6 +5,7 @@ $(document).ready(function() {
    var id = 10;
 
    $calendar.weekCalendar({
+	  
       timeslotsPerHour : 1,
 	  timeFormat: "H:i",
 	  use24Hour: true,
@@ -14,15 +15,16 @@ $(document).ready(function() {
 	  timeslotHeight: 40,
       businessHours :{start: 8, end: 18, limitDisplay: true },
       daysToShow : 7,
+	  
 	  height : 
 	  
 	  function($calendar) {
-         return 495;
+         return 501;
       },
 	  
       eventRender : function(calEvent, $event) {
          if (calEvent.end.getTime() < new Date().getTime()) {
-            $event.css("backgroundColor", "#aaa");
+            $event.css("backgroundColor", "#e05034");
             $event.find(".wc-time").css({
                "backgroundColor" : "#999",
                "border" : "1px solid #888"
@@ -135,13 +137,40 @@ $(document).ready(function() {
       },
       noEvents : function() {
 
-      },
-      data : "appointment/"
+      }
+       
+
+      
    });
 
    function resetForm($dialogContent) {
       $dialogContent.find("input").val("");
       $dialogContent.find("textarea").val("");
+   }
+
+   function getEventData() {
+      var year = new Date().getFullYear();
+      var month = new Date().getMonth();
+      var day = new Date().getDate();
+
+      return {
+         events : [
+            {
+               "id":1,
+               "start": new Date(year, month, day, 12),
+               "end": new Date(year, month, day, 13, 00),
+               "title":"Lunch with Mike"
+            },
+            {
+               "id":6,
+               "start": new Date(year, month, day, 10),
+               "end": new Date(year, month, day, 11),
+               "title":"I'm read-only",
+               readOnly : true
+            }
+
+         ]
+      };
    }
 
 
@@ -163,7 +192,7 @@ $(document).ready(function() {
             endSelected = "selected=\"selected\"";
          }
          $startTimeField.append("<option value=\"" + startTime + "\" " + startSelected + ">" + timeslotTimes[i].startFormatted + "</option>");
-         $endTimeField.append("<option value=\"" + endTime + "\" " + endSelected + ">" + timeslotTimes[i].endFormatted + "</option>");
+         $endTimeField.append("<option value=\"" + startTime + "\" " + endSelected + ">" + timeslotTimes[i].endFormatted + "</option>");
 
       }
       $endTimeOptions = $endTimeField.find("option");
@@ -198,7 +227,6 @@ $(document).ready(function() {
       }
 
    });
-/**/
+alert('check');
 	
-
 });
