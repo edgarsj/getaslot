@@ -59,6 +59,7 @@ def schedule(request, business, employee_id):
         o['title'] = ''
         o['start'] = a.starttime.isoformat()
         o['end'] = a.endtime.isoformat()
+        o['readOnly'] = True
         l.append(o)
     if request.is_ajax() or True:        
         mimetype = 'application/javascript'
