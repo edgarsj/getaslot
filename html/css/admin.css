@@ -7,7 +7,7 @@
 				 ---
 
 /* RESET */
-body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { 
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,textarea,p,blockquote,th,td { 
 	margin:0;
 	padding:0;
 }
@@ -18,7 +18,7 @@ ol, ul, dir, menu {
 	list-style: none;
 	list-style-type: none;
 }
-fieldset,img,abbr,acronym,input { 
+fieldset,img,abbr,acronym { 
 	border:0;
 	outline: 0;
 }
@@ -81,6 +81,7 @@ border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;
 .wc-header {margin: 0 0 0 17px;width: 943px;}
 .wc-business-hours {margin: 0 0 0 55px;border-bottom: 1px solid #d7d6ca;}
 .wc-hour-end, .wc-hour-header {border-bottom: 1px solid #d7d6ca;}
+.wc-time-header-cell {font-size: 12px;font-weight: bold;line-height: 30px;}
 
 
 
