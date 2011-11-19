@@ -348,7 +348,7 @@
             calendarBodyHtml += "<td class=\"wc-day-column day-" + i + "\"><div class=\"wc-day-column-inner\"></div></td>"
          }
 
-         calendarBodyHtml += "</tr></tbody></table><div class=\"wc-bot\"></div></div>";
+         calendarBodyHtml += "</tr></tbody></table></div><div class=\"wc-bot\"></div>";
 
          //append all calendar parts to container
          $(calendarHeaderHtml + calendarBodyHtml).appendTo($calendarContainer);
@@ -599,10 +599,9 @@
          var eventClass, eventHtml, $calEvent, $modifiedEvent;
 
          eventClass = calEvent.id ? "wc-cal-event" : "wc-cal-event wc-new-cal-event";
-         eventHtml = "<div class=\"" + eventClass + " ui-corner-all\">\
-                <div class=\"wc-time ui-corner-all\"></div>\
+         eventHtml = "<div class=\"" + eventClass + " ui-corner-all\">\                
                 <div class=\"wc-title\"></div></div>";
-
+/*<div class=\"wc-time ui-corner-all\"></div>\*/
          $calEvent = $(eventHtml);
          $modifiedEvent = options.eventRender(calEvent, $calEvent);
          $calEvent = $modifiedEvent ? $modifiedEvent.appendTo($weekDay) : $calEvent.appendTo($weekDay);

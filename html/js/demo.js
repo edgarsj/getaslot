@@ -25,10 +25,10 @@ $(document).ready(function() {
          }
       },
       draggable : function(calEvent, $event) {
-         return calEvent.readOnly != true;
+         return calEvent.readOnly != false;
       },
       resizable : function(calEvent, $event) {
-         return calEvent.readOnly != true;
+         return calEvent.readOnly != false;
       },
       eventNew : function(calEvent, $event) {
          var $dialogContent = $("#event_edit_container");
@@ -220,25 +220,5 @@ $(document).ready(function() {
       }
 
    });
-
-
-   var $about = $("#about");
-
-   $("#about_button").click(function() {
-      $about.dialog({
-         title: "About this calendar demo",
-         width: 600,
-         close: function() {
-            $about.dialog("destroy");
-            $about.hide();
-         },
-         buttons: {
-            close : function() {
-               $about.dialog("close");
-            }
-         }
-      }).show();
-   });
-
 
 });
