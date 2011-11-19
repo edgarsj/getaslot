@@ -64,4 +64,10 @@ class Appointment(models.Model):
     customer = models.ForeignKey(User, related_name="appointments", blank=True, null=True)
     name = models.CharField(_("name"), max_length=200, blank=True, null=True)
     phone = models.CharField(_("phone"), max_length=200, blank=True, null=True)
-    pass
+    class Meta:
+        ordering = ['-endtime']
+    def __unicode__(self):
+        return u"%s %s - %s" % (unicode(self.name),
+                      self.starttime.strftime(u'%Y-%m-%d %H:%M'),
+                      self.endtime.strftime(u'%Y-%m-%d %H:%M'),
+                      )
