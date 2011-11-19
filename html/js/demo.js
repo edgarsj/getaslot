@@ -5,6 +5,7 @@ $(document).ready(function() {
    var id = 10;
 
    $calendar.weekCalendar({
+	  
       timeslotsPerHour : 1,
 	  timeFormat: "H:i",
 	  use24Hour: true,
@@ -136,10 +137,10 @@ $(document).ready(function() {
       },
       noEvents : function() {
 
-      },
-      data : function(start, end, callback) {
-         callback(getEventData());
       }
+       
+
+      
    });
 
    function resetForm($dialogContent) {
@@ -226,6 +227,16 @@ $(document).ready(function() {
       }
 
    });
- 	//var ss = $calendar.weekCalendar("getData",); 
-	//alert (ss);
+
+		$('#example-4').click(function(){                    // вешаем на клик по элементу с id = example-4
+			$.getJSON('ajax/example.json', {}, function(json){  // загрузку JSON данных из файла example.json
+				$('#example-4').html('');
+															 // заполняем DOM элемент данными из JSON объекта
+				$('#example-4').append('To: '   + json.note.to + '<br/>')
+							   .append('From: ' + json.note.from + '<br/>')
+							   .append('<b>'    + json.note.heading + '</b><br/>')
+							   .append(           json.note.body + '<br/>');
+			});
+		})
+	
 });
