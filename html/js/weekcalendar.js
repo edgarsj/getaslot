@@ -1,5 +1,5 @@
 /*
- * jQuery.weekCalendar v1.2.3-pre
+ * jQuery.weekCalendar v1.2.2
  * http://www.redredred.com.au/
  *
  * Requires:
@@ -45,6 +45,7 @@
        * Refresh the events for the currently displayed week.
        */
       refresh : function() {
+         this._clearCalendar();
          this._loadCalEvents(this.element.data("startDate")); //reload with existing week
       },
 
@@ -301,7 +302,7 @@
          }
 
          //render calendar header
-         calendarHeaderHtml = "<table class=\"wc-header\"><tbody><tr><td class=\"wc-time-column-header\"></td>";
+         calendarHeaderHtml = "<div class=\"wc-top\"></div> <table class=\"wc-header\"><tbody><tr><td class=\"wc-time-column-header\"></td>";
          for (var i = 1; i <= options.daysToShow; i++) {
             calendarHeaderHtml += "<td class=\"wc-day-column-header wc-day-" + i + "\"></td>";
          }
@@ -347,7 +348,7 @@
             calendarBodyHtml += "<td class=\"wc-day-column day-" + i + "\"><div class=\"wc-day-column-inner\"></div></td>"
          }
 
-         calendarBodyHtml += "</tr></tbody></table></div>";
+         calendarBodyHtml += "</tr></tbody></table><div class=\"wc-bot\"></div></div>";
 
          //append all calendar parts to container
          $(calendarHeaderHtml + calendarBodyHtml).appendTo($calendarContainer);
@@ -383,8 +384,7 @@
 
                var $newEvent = $("<div class=\"wc-cal-event wc-new-cal-event wc-new-cal-event-creating\"></div>");
 
-               /* $newEvent.css({lineHeight: (options.timeslotHeight - 2) + "px", fontSize: (options.timeslotHeight / 2) + "px"}); */
-               $newEvent.css({lineHeight: (options.timeslotHeight - 2) + "px" });
+               $newEvent.css({lineHeight: (options.timeslotHeight - 2) + "px", fontSize: (options.timeslotHeight / 2) + "px"});
                $target.append($newEvent);
 
                var columnOffset = $target.offset().top;
@@ -531,9 +531,6 @@
        * Render the events into the calendar
        */
       _renderEvents : function (events, $weekDayColumns) {
-
-         this._clearCalendar();
-
          var self = this;
          var options = this.options;
          var eventsToRender;
@@ -609,8 +606,7 @@
          $calEvent = $(eventHtml);
          $modifiedEvent = options.eventRender(calEvent, $calEvent);
          $calEvent = $modifiedEvent ? $modifiedEvent.appendTo($weekDay) : $calEvent.appendTo($weekDay);
-         /* $calEvent.css({lineHeight: (options.timeslotHeight - 2) + "px", fontSize: (options.timeslotHeight / 2) + "px"}); */
-         $calEvent.css({lineHeight: (options.timeslotHeight - 2) + "px" });
+         $calEvent.css({lineHeight: (options.timeslotHeight - 2) + "px", fontSize: (options.timeslotHeight / 2) + "px"});
 
          self._refreshEventDetails(calEvent, $calEvent);
          self._positionEvent($weekDay, $calEvent);
@@ -888,13 +884,11 @@
                var newCalEvent = $.extend(true, {start: eventDuration.start, end: eventDuration.end}, calEvent);
                self._adjustForEventCollisions($weekDay, $calEvent, newCalEvent, calEvent, true);
                var $weekDayColumns = self.element.find(".wc-day-column-inner");
-
-                //trigger drop callback
-               options.eventDrop(newCalEvent, calEvent, $newEvent);
-
                var $newEvent = self._renderEvent(newCalEvent, self._findWeekDayForEvent(newCalEvent, $weekDayColumns));
                $calEvent.hide();
-              
+
+               //trigger drop callback
+               options.eventDrop(newCalEvent, calEvent, $newEvent);
                $calEvent.data("preventClick", true);
 
                var $weekDayOld = self._findWeekDayForEvent($calEvent.data("calEvent"), self.element.find(".wc-time-slots .wc-day-column-inner"));
