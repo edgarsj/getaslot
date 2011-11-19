@@ -1,6 +1,7 @@
 from datetime import datetime
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from django.core.urlresolvers import reverse
 
 from django.contrib.auth.models import User
 
@@ -34,3 +35,32 @@ class Business(models.Model):
         return reverse("business", kwargs={
             "slug": self.slug
         })
+class BusinessEmployee(models.Model):
+    business = models.ForeignKey(Business, related_name="employees")
+    name = models.CharField(_("name"), max_length=200)
+    description = models.TextField(_("description"), blank=True, null=True)
+    
+    class Meta:
+        ordering = ['business','name']
+    def __unicode__(self):
+        return self.name
+
+class WorkSchedule(models.Model):
+    employee = models.ForeignKey(BusinessEmployee, related_name="work_schedules")
+    starttime = models.DateTimeField(_("start time"))
+    endtime = models.DateTimeField(_("end time"))
+    class Meta:
+        ordering = ['-endtime']
+    def __unicode__(self):
+        return u"%s %s - %s" % (unicode(self.employee),
+                      self.starttime.strftime(u'%Y-%m-%d %H:%M'),
+                      self.endtime.strftime(u'%Y-%m-%d %H:%M'),
+                      )
+
+class Appointment(models.Model):
+    work_schedule = models.ForeignKey(WorkSchedule, related_name="appointments")
+    starttime = models.DateTimeField(_("start time"))
+    endtime = models.DateTimeField(_("end time"))
+    customer = models.ForeignKey(User, related_name="appointments", blank=True, null=True)
+    contact = models.CharField(_("name"), max_length=200, blank=True, null=True)
+    pass
