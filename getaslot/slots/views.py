@@ -78,6 +78,8 @@ def add_appointment(request, work_schedule_id):
             ap.work_schedule = ws
             ap.name = form.cleaned_data['name']
             ap.phone = form.cleaned_data['phone']
+            ap.starttime = form.cleaned_data['start']
+            ap.endtime = form.cleaned_data['end']
             ap.save()
         mimetype = 'application/javascript'        
         return HttpResponse('OK',mimetype)
@@ -88,10 +90,17 @@ def add_appointment_noschedule(request, employee_id):
         emp = get_object_or_404(BusinessEmployee, id=employee_id)        
         form = SimpleAppointmentForm(request.POST)
         if form.is_valid():
-            #ws = get_object_or_404(WorkSchedule, employee__id=employee_id, starttime_)
+            ws = get_object_or_404(WorkSchedule, employee__id=employee_id,
+                                   starttime__lte=form.cleaned_data['start'],
+                                   endtime__gte=form.cleaned_data['end'])
             #ap = Appointment(work_schedule)
             ap = Appointment()
-            #ap.work_schedule
+            ap.work_schedule = ws
+            ap.name = form.cleaned_data['name']
+            ap.phone = form.cleaned_data['phone']
+            ap.starttime = form.cleaned_data['start']
+            ap.endtime = form.cleaned_data['end']
+            ap.save()
         mimetype = 'application/javascript'        
         return HttpResponse('OK',mimetype)
     return HttpResponse(status=400)
