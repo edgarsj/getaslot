@@ -20,22 +20,23 @@ def business(request, slug):
     
 def appointments(request, business):
     b = get_object_or_404(Business, slug=business)
-    appointments = Appointment.objects.filter(
-                            work_schedule__employee__id__in=b.employees.values_list('pk', flat=True)
-                            )
-    
     l = []
-    for a in appointments:
-        o = {}
-        o['id'] = a.id
-        #o['title'] = a.name
-        o['name'] = a.name
-        o['body'] = a.phone
-        #o['phone'] = a.phone
-                
-        o['start'] = a.starttime.isoformat()
-        o['end'] = a.endtime.isoformat()
-        l.append(o)
+    if request.user.is_authenticated():
+        
+        appointments = Appointment.objects.filter(customer__id = request.user.id).filter(
+                                work_schedule__employee__id__in=b.employees.values_list('pk', flat=True)                                
+                                )            
+        for a in appointments:
+            o = {}
+            o['id'] = a.id
+            #o['title'] = a.name
+            o['name'] = a.name
+            o['body'] = a.phone
+            #o['phone'] = a.phone
+                    
+            o['start'] = a.starttime.isoformat()
+            o['end'] = a.endtime.isoformat()
+            l.append(o)
     
     if request.is_ajax() or True:        
         mimetype = 'application/javascript'
@@ -72,13 +73,16 @@ def busy(request, business, employee_id):
                             )
     l = []
     for a in schedules:
-        o = {}
-        o['id'] = a.id
-        o['title'] = ''
-        o['start'] = datetime.datetime.combine(a.day,datetime.time(BUSINESS_HOURS_FROM)).isoformat()
-        o['end'] = a.starttime.isoformat()
-        o['readOnly'] = True
-        l.append(o)
+        start = datetime.datetime.combine(a.day,datetime.time(BUSINESS_HOURS_FROM))
+        end = datetime.datetime.combine(a.day,datetime.time(BUSINESS_HOURS_TO))
+        if start <= a.starttime:
+            o = {}
+            o['id'] = a.id
+            o['title'] = ''
+            o['start'] = start.isoformat()
+            o['end'] = a.starttime.isoformat()
+            o['readOnly'] = True
+            l.append(o)
         
         for ap in a.appointments.all():
             o = {}
@@ -89,13 +93,14 @@ def busy(request, business, employee_id):
             o['readOnly'] = True
             l.append(o)
 
-        o = {}
-        o['id'] = a.id
-        o['title'] = ''
-        o['start'] = a.starttime.isoformat()
-        o['end'] = datetime.datetime.combine(a.day,datetime.time(BUSINESS_HOURS_TO)).isoformat()
-        o['readOnly'] = True
-        l.append(o)
+        if end >= a.endtime:
+            o = {}
+            o['id'] = a.id
+            o['title'] = ''
+            o['start'] = a.endtime.isoformat()
+            o['end'] = datetime.datetime.combine(a.day,datetime.time(BUSINESS_HOURS_TO)).isoformat()
+            o['readOnly'] = True
+            l.append(o)
             
         
         
