@@ -1,4 +1,6 @@
 
+import os, posixpath
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, "site_media", "media")
 
 # URL that handles the media served from MEDIA_ROOT.
@@ -10,15 +12,14 @@ MEDIA_URL = "/site_media/media/"
 
 STATICFILES_DIRS = [
     os.path.join(PROJECT_ROOT, "media"),
-    os.path.join(PINAX_ROOT, "media", PINAX_THEME),
 ]
 
-ADMIN_MEDIA_PREFIX = posixpath.join(STATIC_URL, "admin/")
+ADMIN_MEDIA_PREFIX = posixpath.join(MEDIA_URL, "admin/")
+
 
 
 TEMPLATE_DIRS = [
     os.path.join(PROJECT_ROOT, "templates"),
-    os.path.join(PINAX_ROOT, "templates", PINAX_THEME),
 ]
 DEFAULT_FROM_EMAIL = 'no-reply@getaslot.com'
 SERVER_EMAIL = 'web-no-reply@getaslot.com'
