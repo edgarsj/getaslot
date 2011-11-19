@@ -63,8 +63,8 @@ $(document).ready(function() {
                save : function() {
                   calEvent.id = id;
                   id++;
-                  calEvent.start = new Date(startField.val());
-                  calEvent.end = new Date(endField.val());
+                  calEvent.start = new Date(startField.val()*1000);
+                  calEvent.end = new Date(endField.val()*1000);
                   calEvent.name = nameField.val();
                   calEvent.phone = phoneField.val();
 					
@@ -78,9 +78,6 @@ $(document).ready(function() {
 							alert(data);
 						}
 					});
-
-				 
-
 
                   $calendar.weekCalendar("removeUnsavedEvents");
                   $calendar.weekCalendar("updateEvent", calEvent);
@@ -116,7 +113,7 @@ $(document).ready(function() {
 
          $dialogContent.dialog({
             modal: true,
-            title: "Edit - " + calEvent.title,
+            title: "Edit - " + calEvent.name,
             close: function() {
                $dialogContent.dialog("destroy");
                $dialogContent.hide();
