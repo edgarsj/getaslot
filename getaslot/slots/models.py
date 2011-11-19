@@ -62,5 +62,6 @@ class Appointment(models.Model):
     starttime = models.DateTimeField(_("start time"))
     endtime = models.DateTimeField(_("end time"))
     customer = models.ForeignKey(User, related_name="appointments", blank=True, null=True)
-    contact = models.CharField(_("name"), max_length=200, blank=True, null=True)
+    name = models.CharField(_("name"), max_length=200, blank=True, null=True)
+    phone = models.CharField(_("phone"), max_length=200, blank=True, null=True)
     pass

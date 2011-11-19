@@ -1,0 +1,55 @@
+[
+  {
+    "pk": 1, 
+    "model": "slots.business", 
+    "fields": {
+      "picture": "", 
+      "description": "Bob's salon", 
+      "title": "Bob's Hair", 
+      "created_at": "2011-11-19 12:48:15", 
+      "owner": 1, 
+      "slug": "bobs-hair"
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "slots.businessemployee", 
+    "fields": {
+      "name": "Bob", 
+      "business": 1, 
+      "description": "the best"
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "slots.workschedule", 
+    "fields": {
+      "employee": 1, 
+      "endtime": "2011-11-21 20:00:00", 
+      "starttime": "2011-11-21 09:00:00"
+    }
+  },{
+    "pk": 2, 
+    "model": "slots.workschedule", 
+    "fields": {
+      "employee": 1, 
+      "endtime": "2011-11-22 20:00:00", 
+      "starttime": "2011-11-22 09:00:00"
+    },{
+    "pk": 3, 
+    "model": "slots.workschedule", 
+    "fields": {
+      "employee": 1, 
+      "endtime": "2011-11-23 20:00:00", 
+      "starttime": "2011-11-23 09:00:00"
+    }
+  },{
+    "pk": 3, 
+    "model": "slots.workschedule", 
+    "fields": {
+      "employee": 1, 
+      "endtime": "2011-11-24 20:00:00", 
+      "starttime": "2011-11-24 09:00:00"
+    }
+  }
+]
