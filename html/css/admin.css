@@ -61,6 +61,12 @@ body {background: url(../images/design/bg.png) repeat;font-size: 12px;font-famil
 #content {width: 960px;margin: 0 auto;min-height: 500px;}
 #footer {width: 960px;margin: 0 auto;min-height: 50px;}
 
+.btn3 {background: url(../images/design/btn_sprite.png) no-repeat 0 -240px;padding-left: 14px;display: block;float: left;margin: 5px 0 0;}
+.btn3 > span {background: url(../images/design/btn_sprite.png) no-repeat right -271px;display: block;height: 29px;}
+.btn3 > span > span {color: #fff;font-size: 13px;font-weight: bold;text-shadow: #8f3e2c 1px 1px 1px;display: block;padding: 5px 10px 0 5px;}
+.btn3:hover {background-position: 0 -302px;}
+.btn3:hover > span {background-position: right -333px;}
+
 /* top menu */
 .topmenu {position: absolute;top: 26px;right: 0;}
 .topmenu li {float: left;position: relative;margin: 0 5px 0 0;}
@@ -150,9 +156,36 @@ border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;
 .dropdown select {float: left;}
 
 /* startpage */
-.home h1 {font-size: 20px;color: #040404;}
+.home .logo {padding-left: 0;}
+.home #content {width: auto;}
+.wr1 {width: 960px;margin: 36px auto 0;}
+.home h1 {font-size: 20px;font-weight: bold;color: #040404;}
 .home p {font-size: 15px;color: #040404;}
-.home .offers {float: left;width: 455px;}
+.home .clients {float: left;width: 455px;}
+.home .client {margin: 0 0 20px 31px;}
+.home .big_pic {float: right;position: relative;}
+.home .desc {background: #f8f8f7}
+
+.home .desc .inr {width: 960px;margin: 0 auto;}
+.home .desc .offers {padding: 38px 0 0;}
+.home .desc .offer {margin: 0 0 19px;}
+.oimg {float: left;width: 113px;margin: 0 0 0 37px;}
+.otxt {float: left;margin: 35px 0 0 21px;}
+.otxt h2 {font-size: 20px;font-weight: bold;color: #040404;}
+.otxt p {font-size: 16px;font-weight: normal;color: #040404;}
+
+.home .soc {position: absolute;top: -21px;right: 0;}
+.home .soc a {display: block;width: 16px;height: 16px;float: left;margin: 0 0 0 5px;}
+.soc .fc {background: url(../images/design/soc_sprite.png) no-repeat 0 0;}
+.soc .tw {background: url(../images/design/soc_sprite.png) no-repeat -21px 0;}
+
+.home #footer {background: #e46246;width: auto;height: 14px;border-top: 1px solid #ba5039;padding: 0;min-height: 0;margin: 38px 0 0;}
+
+
+
+
+
+
 
 
 
