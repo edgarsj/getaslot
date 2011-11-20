@@ -81,3 +81,10 @@ class Appointment(models.Model):
     def save(self, **kwargs):
         self.day = self.starttime.date()
         super(Appointment, self).save(**kwargs)
+
+class Subscriber(models.Model):
+    email = models.CharField("email", max_length=200)
+    ip_address = models.CharField("ip adrese", max_length=200)
+    created_at = models.DateTimeField("created at", default=datetime.now)
+    def __unicode__(self):
+        return self.email 

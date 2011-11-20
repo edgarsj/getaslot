@@ -51,7 +51,7 @@ blockquote, q {
 /****** GENERAL(gecko ff3 win) ******/
 
 /* Typography */
-body {background: url(../images/design/bg.png) repeat;font-size: 12px;font-family: Myriad Pro, Helvetica, Arial, sans-serif;}
+body {background: url(../images/design/bg.png) repeat;font-size: 12px;font-family: Helvetica, Arial, sans-serif;}
 
 .clear {	clear: both;}
 
@@ -166,7 +166,7 @@ border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;
 .home .clients {float: left;width: 455px;}
 .home .client {margin: 0 0 20px 31px;}
 .home .big_pic {float: right;position: relative;}
-.home .desc {background: #f8f8f7}
+.home .desc {background: #f8f8f7;}
 
 .home .desc .inr {width: 960px;margin: 0 auto;}
 .home .desc .offers {padding: 38px 0 0;}
@@ -181,7 +181,7 @@ border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;
 .soc .fc {background: url(../images/design/soc_sprite.png) no-repeat 0 0;}
 .soc .tw {background: url(../images/design/soc_sprite.png) no-repeat -21px 0;}
 
-.home #footer {background: #e46246;width: auto;height: 14px;border-top: 1px solid #ba5039;padding: 0;min-height: 0;margin: 38px 0 0;}
+.home #footer {background: #e46246;width: auto;height: 14px;border-top: 1px solid #ba5039;padding: 0;min-height: 0;margin: 0;}
 
 .wc-nav {padding-right: 0;}
 .wc-nav button {background: none;border: 0 none;font-size: 12px;font-weight: bold;margin: 0;}
@@ -217,9 +217,10 @@ border-radius: 0;border-radius: 0;
 #mod_subscribe input {background: url(../images/design/subscribe.png) no-repeat 0 0;width: 238px;height: 26px;float: left;font-size: 11px;color: #7c7c7c;border: 1px solid #;padding: 0 5px;border: 0 none;}
 #mod_subscribe .btn1 {float: left;margin: 0 0 0 3px;}
 
-
-
-
+.copyright {float: right;margin: 0 17px 7px 0;}
+.copyright p {text-align: center;}
+.copyright p a {font-size: 12px;font-weight: bold;color: #040404;}
+.copyright p a:hover {text-decoration: underline;}
 
 
 
