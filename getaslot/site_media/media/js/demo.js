@@ -25,7 +25,7 @@ $(document).ready(function() {
       eventRender : function(calEvent, $event, schedule) {
 		$event.css("backgroundColor", "#e05034");
 			if (schedule == true) {
-				$event.css("backgroundColor", "#e5e5e5");
+				$event.css("backgroundColor", "#cccccc");
 				$event.css("border", "0 none");
 				$event.css("background-image", "none");
 			}
