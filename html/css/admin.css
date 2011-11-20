@@ -89,7 +89,7 @@ body {background: url(../images/design/bg.png) repeat;font-size: 12px;font-famil
 .parent > a > span > span {background: url(../images/design/parent.png) no-repeat right 10px;padding: 5px 34px 0 9px;}
 .parent > a.btn2.active > span > span {background: url(../images/design/parent2.png) no-repeat right 10px;}
 
-.topmenu .child {width: 197px;margin: 10px 0 0;
+.topmenu .child {width: 197px;margin: -2px 0 0;
 -moz-box-shadow: 0px 0px 2px #2d2d2d;
 -webkit-box-shadow: 0px 0px 2px #2d2d2d;
 box-shadow: 0px 0px 2px #2d2d2d;

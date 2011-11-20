@@ -1327,9 +1327,9 @@
          timeslotsPerHour : 4,
          buttons : true,
          buttonText : {
-            today : "today",
-            lastWeek : "&nbsp;&lt;&nbsp;",
-            nextWeek : "&nbsp;&gt;&nbsp;"
+            today : "TODAY",
+            lastWeek : "&nbsp;&nbsp;PREVIOUS WEEK",
+            nextWeek : "NEXT WEEK&nbsp;&nbsp;"
          },
          scrollToHourMillis : 500,
          allowCalEventOverlap : false,

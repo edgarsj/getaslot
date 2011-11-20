@@ -23,8 +23,8 @@
 				</div>
 				<div class="topmenu">
 					<ul>
-						<!-- <li><a class="btn1" href="#" title="Dashboard"><span><span>Dashboard</span></span></a></li> -->
-						<li class="parent" id="btn1">
+						<!-- <li><a class="btn1" href="#" title="Dashboard"><span><span>Advanced features</span></span></a></li> -->
+						<!-- <li class="parent" id="btn1">
 							<a class="btn1"  href="#" title="My Account"><span><span>My Account</span></span></a>
 							<ul class="child" id="btn1_child" style="display: none;">
 								<li class="ctop"><span>&nbsp;</span></li>
@@ -33,8 +33,9 @@
 								<li><a href="#" title="Logout"><span><span>Logout</span></span></a></li>
 								<li class="cbot"></li>
 							</ul>
-						</li>
-						<!-- <li class="parent">
+						</li> -->
+						<li id="btn1"><a class="btn1"  href="#" title="Register"><span><span>Register</span></span></a></li>
+						<li>
 													<a class="btn2" href="#" title="Sign in"><span><span>Sign in</span></span></a>
 													<div class="signin" style="display: none;">
 														<div class="inr">
@@ -50,18 +51,30 @@
 															</form>
 														</div>
 													</div>
-												</li> -->
+												</li>
 					</ul>
 				</div>
 			</div>
 		</div>
 		
 		<div id="content">
-			<div class="dropdown">
-				<select name="employee">
-					<option value="1">Bob</option>
-					<option value="2">Anna</option>
-				</select>
+			<div class="infln">
+				<div class="member">
+					<div class="mpic">
+						<img src="{{ STATIC_URL }}images/member.png" alt="member img" />
+					</div>
+					<div class="mtxt">
+						<h1>Henry Pipster</h1>
+						<p>Kick-ass hair dresser</p>
+					</div>
+				</div>
+				<div class="info">
+					<div class="btn4">
+						<div>
+							<span>Click on any white cell to schedule your appointment</span>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div id="calendar"></div>
 			<div id="event_edit_container">
@@ -91,6 +104,11 @@
 		</div>
 		
 		<div id="footer">
+			<div class="soc">
+				<a class="fc" href="http://www.facebook.com/#!/getaslot" title="facebook"></a>
+				<a class="tw" href="http://twitter.com/#!/search/getaslot" title="twitter"></a>
+				<div class="clear"></div>
+			</div>
 			<div class="g48">
 				<a href="http://garage48.org/en" title="garage48"><img src="{{ STATIC_URL }}images/design/garage48.png" alt="garage48 logo" /></a>
 			</div>

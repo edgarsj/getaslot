@@ -31,6 +31,7 @@
 								<li><a href="#" title="Edit company info"><span><span>Edit company info</span></span></a></li>
 								<li><a href="#" title="Launch SMS Campaign"><span><span>Launch SMS Campaign</span></span></a></li>
 								<li><a href="#" title="Manage employees"><span><span>Manage employees</span></span></a></li>
+								<li><a href="#" title="Booking statistics"><span><span>Booking statistics</span></span></a></li>
 								<li><a href="#" title="Logout"><span><span>Logout</span></span></a></li>
 								<li class="cbot"></li>
 							</ul>
@@ -58,11 +59,23 @@
 		</div>
 		
 		<div id="content">
-			<div class="dropdown">
-				<select name="employee">
-					<option value="1">Bob</option>
-					<option value="2">Anna</option>
-				</select>
+			<div class="infln">
+				<div class="member">
+					<div class="mpic">
+						<img src="{{ STATIC_URL }}images/member.png" alt="member img" />
+					</div>
+					<div class="mtxt">
+						<h1>Henry Pipster</h1>
+						<p>Kick-ass hair dresser</p>
+					</div>
+				</div>
+				<div class="info">
+					<div class="btn4">
+						<div>
+							<span>Click on any white cell to schedule appointment</span>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div id="calendar"></div>
 			<div id="event_edit_container">
