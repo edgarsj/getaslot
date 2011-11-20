@@ -211,7 +211,7 @@ class SubscriberForm(forms.ModelForm):
     class Meta:
         model = Subscriber
         #exclude = ('creator, created_on',)
-        fields = ('email')
+        fields = ('email',)
         
 @csrf_exempt        
 def save_subscriber(request):
