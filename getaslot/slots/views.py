@@ -19,22 +19,36 @@ def business(request, slug):
     return render_to_response("business/business.html", {
         "business": b,
     }, context_instance=RequestContext(request))
-    
+
+def businessAdmin(request, slug):
+    b = get_object_or_404(Business, slug=slug)    
+    return render_to_response("business/businessAdmin.html", {
+        "business": b,
+    }, context_instance=RequestContext(request))
+
+
+
 def appointments(request, business):
     b = get_object_or_404(Business, slug=business)
     l = []
+    admin = request.GET.get('admin')
+
     if request.user.is_authenticated():
-        
-        appointments = Appointment.objects.filter(customer__id = request.user.id).filter(
+        if admin == "1":
+            appointments = Appointment.objects.filter(
                                 work_schedule__employee__id__in=b.employees.values_list('pk', flat=True)                                
-                                )            
+                                )
+        else:
+            appointments = Appointment.objects.filter(customer__id = request.user.id).filter(
+                                work_schedule__employee__id__in=b.employees.values_list('pk', flat=True)                                
+                                )
         for a in appointments:
             o = {}
             o['id'] = a.id
             #o['title'] = a.name
             o['name'] = a.name
-            o['body'] = a.phone
-            #o['phone'] = a.phone
+            #o['body'] = a.phone
+            o['phone'] = a.phone
                     
             o['start'] = a.starttime.isoformat()
             o['end'] = a.endtime.isoformat()
