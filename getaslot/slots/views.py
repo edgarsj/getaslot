@@ -68,20 +68,46 @@ def schedule(request, business, employee_id):
     else:
         return HttpResponse(status=400)
 
+
+def busy_date(date):
+    start = datetime.datetime.combine(date,datetime.time(BUSINESS_HOURS_FROM))
+    end = datetime.datetime.combine(date,datetime.time(BUSINESS_HOURS_TO))
+    o = {}
+    o['id'] = 'null'
+    o['title'] = ''
+    o['start'] = start.isoformat()
+    o['end'] = end.isoformat()
+    o['readOnly'] = True
+    return o
+
+def daterange(start_date, end_date):
+    for n in range((end_date - start_date).days):
+        yield start_date + datetime.timedelta(n)
+        
 def busy(request, business, employee_id):
 
+    from_date = datetime.datetime.fromtimestamp(int(request.GET.get('start'))).date()
+    to_date = datetime.datetime.fromtimestamp(int(request.GET.get('end'))).date()
     schedules = WorkSchedule.objects.filter(
                             employee__id=employee_id
-                            )
+                            ).order_by('day')
     l = []
+    last_date = None
     for a in schedules:
-        start = datetime.datetime.combine(a.day,datetime.time(BUSINESS_HOURS_FROM))
-        end = datetime.datetime.combine(a.day,datetime.time(BUSINESS_HOURS_TO))
-        if start <= a.starttime:
+        if not last_date and a.day:
+            for single_date in daterange(from_date, a.day):
+                l.append(busy_date(single_date))
+        elif a.day-last_date > datetime.timedelta(1):
+            for single_date in daterange(last_date+datetime.timedelta(1), a.day):
+                l.append(busy_date(single_date))
+        last_date = a.day
+        day_start_time = datetime.datetime.combine(a.day,datetime.time(BUSINESS_HOURS_FROM))
+        day_end_time = datetime.datetime.combine(a.day,datetime.time(BUSINESS_HOURS_TO))
+        if day_start_time <= a.starttime:
             o = {}
             o['id'] = a.id
             o['title'] = ''
-            o['start'] = start.isoformat()
+            o['start'] = day_start_time.isoformat()
             o['end'] = a.starttime.isoformat()
             o['readOnly'] = True
             l.append(o)
@@ -95,15 +121,17 @@ def busy(request, business, employee_id):
             o['readOnly'] = True
             l.append(o)
 
-        if end >= a.endtime:
+        if day_end_time >= a.endtime:
             o = {}
             o['id'] = a.id
             o['title'] = ''
             o['start'] = a.endtime.isoformat()
-            o['end'] = datetime.datetime.combine(a.day,datetime.time(BUSINESS_HOURS_TO)).isoformat()
+            o['end'] = day_end_time.isoformat()
             o['readOnly'] = True
             l.append(o)
-            
+    if to_date > last_date:
+        for single_date in daterange(a.day+datetime.timedelta(1), to_date):
+            l.append(busy_date(single_date))            
         
         
     if request.is_ajax() or True:        
