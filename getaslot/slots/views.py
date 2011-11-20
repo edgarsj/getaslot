@@ -33,7 +33,8 @@ def appointments(request, business):
     l = []
     admin = request.GET.get('admin')
 
-    if True or request.user.is_authenticated():
+    #if True or request.user.is_authenticated():
+    if admin == "1":
         if admin == "1":
             appointments = Appointment.objects.filter(
                                 work_schedule__employee__id__in=b.employees.values_list('pk', flat=True)                                
