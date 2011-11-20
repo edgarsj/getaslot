@@ -149,7 +149,7 @@ border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;
 .wc-scrollable-grid {height: 401px!important;}
 
 
-#footer {padding: 0 0 10px;}
+#footer {padding: 0 0 10px;position: relative;}
 .g48 {width: 100px;height: 45px;float: right;margin: 5px 0 0;}
 
 .dropdown label {font-size: 13px;font-weight: bold;color: #000;float: left;margin: 6px 10px 0 0;}
@@ -208,5 +208,15 @@ border-radius: 0;border-radius: 0;
 .btn4 {background: url(../images/design/btn_sprite.png) no-repeat 0 -363px;padding-left: 23px;}
 .btn4 div {background: url(../images/design/btn_sprite.png) no-repeat right -393px;height: 26px;padding-right: 10px;}
 .btn4 span {display: block;padding-top: 5px;color: #010101;font-size: 12px;font-weight: bold;}
+
+.bcknd .soc {position: absolute;right: 110px;top: 21px;}
+.bcknd .soc a {display: block;width: 16px;height: 16px;float: left;margin: 0 0 0 5px;}
+
+
+
+
+
+
+
 
 
