@@ -27,6 +27,7 @@ $(document).ready(function() {
 			if (schedule == true) {
 				$event.css("backgroundColor", "#cccccc");
 				$event.css("border", "0 none");
+				$event.css("background-image", "none");
 			}
 			else {
          if (calEvent.end.getTime() < new Date().getTime()) {
