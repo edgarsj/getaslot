@@ -68,7 +68,9 @@ class Appointment(models.Model):
     customer = models.ForeignKey(User, related_name="appointments", blank=True, null=True)
     name = models.CharField(_("name"), max_length=200, blank=True, null=True)
     phone = models.CharField(_("phone"), max_length=200, blank=True, null=True)
+    created_at = models.DateTimeField(_("created at"), default=datetime.now)
     reminder_sent = models.BooleanField(_("reminder sent"), default=False)
+    confirmation_sent = models.BooleanField(_("confirmation sent"), default=False)
     class Meta:
         ordering = ['-endtime']
     def __unicode__(self):
