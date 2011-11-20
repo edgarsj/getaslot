@@ -76,6 +76,8 @@ body {background: url(../images/design/bg.png) repeat;font-size: 12px;font-famil
 .btn1 > span {background: url(../images/design/btn_sprite.png) no-repeat right -30px;height: 28px;display: block;}
 .btn1 > span > span {display: block;padding: 5px 12px 0 9px;color: #fff;text-shadow: #8f3e2c 1px 1px 1px;}
 
+.btn1:hover {background-position: 0 -120px;}
+.btn1:hover > span {background-position: right -150px;}
 .btn1.active {background-position: 0 -120px;}
 .btn1.active > span {background-position: right -150px;}
 
@@ -212,7 +214,8 @@ border-radius: 0;border-radius: 0;
 .bcknd .soc {position: absolute;right: 110px;top: 21px;}
 .bcknd .soc a {display: block;width: 16px;height: 16px;float: left;margin: 0 0 0 5px;}
 
-
+#mod_subscribe input {background: url(../images/design/subscribe.png) no-repeat 0 0;width: 238px;height: 26px;float: left;font-size: 11px;color: #7c7c7c;border: 1px solid #;padding: 0 5px;border: 0 none;}
+#mod_subscribe .btn1 {float: left;margin: 0 0 0 3px;}
 
 
 

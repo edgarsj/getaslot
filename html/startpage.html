@@ -45,7 +45,7 @@
 								<li class="cbot"></li>
 							</ul>
 						</li>
-						<li class="parent">
+						<li class="parent" style="display: none;">
 							<a class="btn2" href="#" title="Sign in"><span><span>Sign in</span></span></a>
 							<div class="signin" style="display: none;">
 								<div class="inr">
@@ -58,6 +58,19 @@
 										</div>
 										<a class="forgot" href="#" title="Forgot password ?">Forgot password ?</a>
 										<a class="submit" href="#" title="Sign in"><span>Sign in</span></a>
+									</form>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div id="mod_subscribe">
+								<div class="container">
+									<form method="post" action="#">
+										<div class="inpt">
+											<input title="PLZ eingeben" type="text" name="subscribe" id="subscribe" value="Enter your email to get notified when we launch" onfocus="if(this.value=='Enter your email to get notified when we launch') this.value='';" onblur="if(this.value=='') this.value='Enter your email to get notified when we launch';" />
+											<a class="btn1" title="Subscribe" onclick="submit(this);" href="javascript:;"><span><span>Subscribe</span></span></a>
+										</div>
+										<div class="clear"></div>
 									</form>
 								</div>
 							</div>
