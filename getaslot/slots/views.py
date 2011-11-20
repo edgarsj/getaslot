@@ -129,7 +129,6 @@ def busy(request, business, employee_id):
             o['end'] = day_end_time.isoformat()
             o['readOnly'] = True
             l.append(o)
-    print last_date
     if to_date > last_date:
         for single_date in daterange(a.day+datetime.timedelta(1), to_date):
             l.append(busy_date(single_date))            
