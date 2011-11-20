@@ -24,8 +24,11 @@ $(document).ready(function() {
 	  
       eventRender : function(calEvent, $event, schedule) {
 		$event.css("backgroundColor", "#e05034");
-			if (schedule == true)
+			if (schedule == true) {
 				$event.css("backgroundColor", "#cccccc");
+				$event.css("border", "0 none");
+				$event.css("background-image", "none");
+			}
 			else {
          if (calEvent.end.getTime() < new Date().getTime()) {
 			$event.css("backgroundColor", "#e05034");
