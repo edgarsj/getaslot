@@ -1,40 +1,202 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-   "http://www.w3.org/TR/html4/loose.dtd">
-
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-	<link rel="shortcut icon" href="{{ STATIC_URL }}favicon.ico" />
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>getaslot.com</title>
-	<meta name="generator" content="TextMate http://macromates.com/">
-	<meta name="author" content="Agris Ameriks">
-	<!-- Date: 2011-11-19 -->
-	<style type="text/css"> 
-		body {
-			background: url('{{ STATIC_URL }}images/bg.png') repeat;
-		}
-		#logo {
-			width:501px;
-			height:95px;
-			
-			margin:0 auto;
-		}
-		
-		#outer {width:501px;margin:0 auto;position: static;}
-		#middle {position: absolute; top: 40%; display: table-cell; vertical-align: middle; width: 501px;}
-		#inner {top: -40%; background: url('{{ STATIC_URL }}images/about/logo.png') no-repeat;height:95px;padding-top:120px;text-align:center;font: 1.2em  Arial, Helvetica, sans-serif;}
-		a {color:#38373a;text-decoration:none;}
-		a:hover {color:#f8373a;}
-		
-	</style>
-</head>
-<body>
-	<div id="outer">
-	  <div id="middle">
-	    <div id="inner"><a href="/about/">About team</a>
-	    </div>
-	  </div>
-	</div>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<meta name="Title" content="getaslot.com" />
+	<meta name="author" content="getaslot.com" />
+	<meta name="keywords" content="getaslot.com" />
+	<meta name="description" content="getaslot.com" />
+	<meta http-equiv="content-language" content="LV" />
+	<meta name="googlebot" content="noindex,nofollow" />
+	<meta name="robots" content="noindex,nofollow" />
+	<!--
+	<link rel="shortcut icon" href="/favicon.ico" /> 
+	<link rel="icon" href="/favicon.ico" type="image/x-icon" /> 
+	-->
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/start/jquery-ui.css" media="screen, print, projection" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/jquery.wekcalendar.css" media="screen, print, projection" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/caldemo.css" media="screen, print, projection" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/admin.css" media="screen, print, projection" />
+
+	<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js'></script>
+	<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js'></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/weekcalendar.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/demo.js"></script>
+
+	<script type="text/javascript">
+	function submitForm()
+	{
+		jQuery.ajax({type: 'POST', 
+			url: '/subscribe/',
+			data: $('#subscribeForm').serialize(),
+			success: function(data) {$('input#subscribe').attr('disabled','disabled').val('Thank you for subscription!'); },
+			error: function(data) {alert("Sorry. Error - "+data); } 
+		});
+		return false;
+	}
 	
+	$(document).ready(function() {
+		$("#subscribeForm").submit(function() {
+		 submitForm();
+		 return false;
+		});
+	});
+	</script>
+
+	<title>getaslot.com</title>
+</head>
+
+<body>
+	<div class="home">
+		<div id="header">
+			<div class="inr">
+				<div class="logo">
+					<a href="./" title="getaslot.com"><img alt="getaslot logo" src="{{ STATIC_URL }}images/design/logo.png" /></a>
+				</div>
+				<div class="topmenu">
+					<ul>
+						<li style="display: none;"><a class="btn1" href="#" title="Dashboard"><span><span>Dashboard</span></span></a></li>
+						<li style="display: none;" class="parent">
+							<a class="btn1" href="#" title="My Account"><span><span>My Account</span></span></a>
+							<ul class="child">
+								<li class="ctop"><span>&nbsp;</span></li>
+								<li><a href="#" title="Edit company info"><span><span>Edit company info</span></span></a></li>
+								<li><a href="#" title="Manage employees"><span><span>Manage employees</span></span></a></li>
+								<li><a href="#" title="Logout"><span><span>Logout</span></span></a></li>
+								<li class="cbot"></li>
+							</ul>
+						</li>
+						<li class="parent" style="display: none;">
+							<a class="btn2" href="#" title="Sign in"><span><span>Sign in</span></span></a>
+							<div class="signin" style="display: none;">
+								<div class="inr">
+									<form method="post" action="#">
+										<div class="inpt">
+											<input type="text" name="user" id="user" onfocus="if(this.value=='Username') this.value='';" onblur="if(this.value=='') this.value='Username';" value="Username" />
+										</div>
+										<div class="inpt">
+											<input type="password" name="pswd" id="pswd" onfocus="if(this.value=='Password') this.value='';" onblur="if(this.value=='') this.value='Password';" value="Password" />
+										</div>
+										<a class="forgot" href="#" title="Forgot password ?">Forgot password ?</a>
+										<a class="submit" href="#" title="Sign in"><span>Sign in</span></a>
+									</form>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div id="mod_subscribe">
+								<div class="container">
+									<form method="post" action="/subscribe/" id="subscribeForm">
+										<div class="inpt">
+											<input title="PLZ eingeben" type="text" name="subscribe" id="subscribe" value="Enter your email to get notified when we launch" onfocus="if(this.value=='Enter your email to get notified when we launch') this.value='';" onblur="if(this.value=='') this.value='Enter your email to get notified when we launch';" />
+											<a class="btn1" title="Subscribe" onclick="submitForm();" href="javascript:;"><span><span>Subscribe</span></span></a>
+										</div>
+										<div class="clear"></div>
+									</form>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<div id="content">
+			<div class="wr1">
+				<div class="clients">
+					<div class="client">
+						<h1>Individuals</h1>
+						<p>
+							Find and reserve time slots for services from hair dresser
+							to dentist all from the comfort of your browser.
+						</p>
+						<a class="btn3" href="#" title="Schedule your next appointment"><span><span>SCHEDULE YOUR NEXT APPOINTMENT</span></span></a>
+						<div class="clear"></div>
+					</div>
+					<div class="client">
+						<h1>Companies</h1>
+						<p>
+							A cost-effective tool for streamlining scheduling workflow
+							of your service-based business. 
+						</p>
+						<a class="btn3" href="#" title="Set-up your scheduler"><span><span>SET-UP YOUR SCHEDULER</span></span></a>
+						<div class="clear"></div>
+					</div>
+				</div>
+				<div class="big_pic">
+					<img src="{{ STATIC_URL }}images/example.jpg" alt="example" />
+					<div class="soc">
+						<a class="fc" href="http://www.facebook.com/#!/getaslot" title="facebook"></a>
+						<a class="tw" href="http://twitter.com/#!/search/getaslot" title="twitter"></a>
+						<div class="clear"></div>
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="desc">
+				<div class="inr">
+					<div class="offers">
+						<div class="offer">
+							<div class="oimg">
+								<img src="{{ STATIC_URL }}images/offer1.jpg" alt="Customize everything" />
+							</div>
+							<div class="otxt">
+								<h2>Customize everything</h2>
+								<p>
+									Make the functionality fit your business. 
+									Adjust business hours, time slot size etc.
+								</p>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="offer">
+							<div class="oimg">
+								<img src="{{ STATIC_URL }}images/offer2.jpg" alt="Per-employee management and stats" />
+							</div>
+							<div class="otxt">
+								<h2>Per-employee management and stats</h2>
+								<p>
+									Keep track of who’s occupied and when.
+								</p>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="offer">
+							<div class="oimg">
+								<img src="{{ STATIC_URL }}images/offer3.jpg" alt="Automated reminders" />
+							</div>
+							<div class="otxt">
+								<h2>Automated reminders</h2>
+								<p>
+									Make sure your clients show up by letting the system remind them via SMS.
+								</p>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="offer">
+							<div class="oimg">
+								<img src="{{ STATIC_URL }}images/offer4.jpg" alt="More to come" />
+							</div>
+							<div class="otxt">
+								<h2>More to come</h2>
+								<p>
+									A mobile app, dynamic discount system and much more.
+								</p>
+							</div>
+							<div class="clear"></div>
+						</div>
+					</div>
+					<div class="g48">
+						<a href="http://garage48.org/en" title="garage48"><img src="{{ STATIC_URL }}images/design/garage48.png" alt="garage48 logo" /></a>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+		
+		<div id="footer">
+			
+		</div>
+	</div>
 </body>
 </html>
