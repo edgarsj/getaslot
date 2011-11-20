@@ -189,7 +189,11 @@ button.wc-today {border-left: 1px solid #a8a79e!important;border-right: 1px soli
 .dropdown {left: 16px;top: 11px;position: relative;}
 .dropdown select {border: 0 none;background: url(../images/design/select_bg.png) no-repeat 0 0;width: 191px;font-size: 12px;height: 21px;padding: 2px 3px 2px 2px;margin: 3px 0 0;}
 
-
+.wc-cal-event {border: 1px solid #b60606;background: #e66447 url(../images/design/cbg.png) repeat-x 0 top;
+-moz-border-radius: 0;-moz-border-radius: 0;
+-webkit-border-radius: 0;-webkit-border-radius: 0;
+border-radius: 0;border-radius: 0;
+}
 
 
 
