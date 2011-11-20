@@ -4,7 +4,7 @@ import datetime
 from django.shortcuts import render_to_response, get_object_or_404
 from django.core import serializers
 from django.template import RequestContext
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from django import forms
 from django.views.decorators.csrf import csrf_exempt
 
@@ -12,7 +12,7 @@ from django.views.decorators.csrf import csrf_exempt
 BUSINESS_HOURS_FROM = 8
 BUSINESS_HOURS_TO = 20
 
-from slots.models import Business, Appointment, WorkSchedule, BusinessEmployee
+from slots.models import Business, Appointment, WorkSchedule, BusinessEmployee, Subscriber
 
 def business(request, slug):    
     b = get_object_or_404(Business, slug=slug)    
@@ -204,3 +204,25 @@ def add_appointment_noschedule(request, business, employee_id):
         mimetype = 'application/javascript'        
         return HttpResponse('ERROR',mimetype)
     return HttpResponse(status=400)
+
+class SubscriberForm(forms.ModelForm):
+    def __init__(self,*args,**kwargs):
+        super (SubscriberForm,self ).__init__(*args,**kwargs) # populates the post
+    class Meta:
+        model = Subscriber
+        #exclude = ('creator, created_on',)
+        fields = ('email')
+        
+@csrf_exempt        
+def save_subscriber(request):
+    form = SubscriberForm(request.POST or None)
+    if request.method == "POST":
+        if form.is_valid():
+            subscriber = form.save(commit=False)
+            subscriber.ip_address = request.META['REMOTE_ADDR']
+            subscriber.save()                        
+            return HttpResponse("{'result':'ok'}",mimetype = 'application/json')
+        else:
+            return HttpResponse(form.errors,mimetype = 'application/json')
+    else: 
+        raise Http404("")

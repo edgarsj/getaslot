@@ -18,6 +18,7 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^slotsareus/', include(admin.site.urls)),
+    url(r"^subscribe/$", 'slots.views.save_subscriber', name='save_subscriber'),
     url(r"^(?P<slug>[\w-]+)/$", 'slots.views.business', name='business'),
 	url(r"^(?P<slug>[\w-]+)/admin/$", 'slots.views.businessAdmin', name='businessAdmin'),
     url(r"^(?P<business>[\w-]+)/appointments/$", 'slots.views.appointments', name="business_appointments"),
