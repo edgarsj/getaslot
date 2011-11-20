@@ -281,5 +281,5 @@ $(document).ready(function() {
 		});
 		
 		
-		
+		$calendar.weekCalendar("nextWeek");	
 });
