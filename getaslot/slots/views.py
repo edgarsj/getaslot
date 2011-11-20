@@ -8,6 +8,7 @@ from django.http import HttpResponse, Http404
 from django import forms
 from django.views.decorators.csrf import csrf_exempt
 
+from util.sms import send_sms
 
 BUSINESS_HOURS_FROM = 8
 BUSINESS_HOURS_TO = 20
@@ -176,6 +177,17 @@ def add_appointment(request, work_schedule_id):
             ap.starttime = form.cleaned_data['start']
             ap.endtime = form.cleaned_data['end']
             ap.save()
+            if ap.phone.startswith('+3712') or (len(ap.phone)==8 and ap.phone.startswith('2')):
+                if len(ap.phone) ==8:
+                    ap.phone = '+371'+ap.phone
+                msg = u'Henry will be waiting for you at Alexandra Beauty on %s at %s' % (
+                                    ap.starttime.strftime(u'%Y-%m-%d'),
+                                    ap.starttime.strftime(u'%H:%M'),
+                                    )
+                
+                data = send_sms(ap.phone, msg)
+                ap.confirmation_sent = True
+            ap.save()
         mimetype = 'application/javascript'        
         return HttpResponse('OK',mimetype)
     return HttpResponse(status=400)
@@ -199,6 +211,17 @@ def add_appointment_noschedule(request, business, employee_id):
             ap.phone = form.cleaned_data['phone']
             ap.starttime = start
             ap.endtime = end
+            ap.save()
+            if ap.phone.startswith('+3712') or (len(ap.phone)==8 and ap.phone.startswith('2')):
+                if len(ap.phone) ==8:
+                    ap.phone = '+371'+ap.phone
+                msg = u'Henry will be waiting for you at Alexandra Beauty on %s at %s' % (
+                                    ap.starttime.strftime(u'%Y-%m-%d'),
+                                    ap.starttime.strftime(u'%H:%M'),
+                                    )
+                
+                data = send_sms(ap.phone, msg)
+                ap.confirmation_sent = True
             ap.save()
             mimetype = 'application/javascript'
             return HttpResponse('OK',mimetype)
