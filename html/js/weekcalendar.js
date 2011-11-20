@@ -277,8 +277,8 @@
 
          if (options.buttons) {
             calendarNavHtml = "<div class=\"wc-nav\">\
-                    <button class=\"wc-today\">" + options.buttonText.today + "</button>\
                     <button class=\"wc-prev\">" + options.buttonText.lastWeek + "</button>\
+                    <button class=\"wc-today\">" + options.buttonText.today + "</button>\
                     <button class=\"wc-next\">" + options.buttonText.nextWeek + "</button>\
                     </div>";
 
@@ -1310,9 +1310,9 @@
          timeslotsPerHour : 4,
          buttons : true,
          buttonText : {
-            today : "today",
-            lastWeek : "&nbsp;&lt;&nbsp;",
-            nextWeek : "&nbsp;&gt;&nbsp;"
+            today : "TODAY",
+            lastWeek : "PREVIOUS WEEK",
+            nextWeek : "NEXT WEEK"
          },
          scrollToHourMillis : 500,
          allowCalEventOverlap : false,
