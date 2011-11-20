@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% block header %}
+
+
+
+<link rel="stylesheet" href="{{ STATIC_URL }}css/jquery.wekcalendar.css" media="screen, print, projection" />
+<link rel="stylesheet" href="{{ STATIC_URL }}css/caldemo.css" media="screen, print, projection" />
+<link rel="stylesheet" href="{{ STATIC_URL }}css/admin.css" media="screen, print, projection" />
+<script type="text/javascript" src="{{ STATIC_URL }}js/weekcalendar.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/demoAdmin.js"></script>
+
+
+
+
+{% endblock %}
+{% block content %}
+
+	<div class="bcknd">
+		<div id="header">
+			<div class="inr">
+				<div class="logo">
+					<a href="./" title="getaslot.com"><img alt="getaslot logo" src="{{ STATIC_URL }}images/design/logo.png" /></a>
+				</div>
+				<div class="topmenu">
+					<ul>
+						<li><a class="btn1" href="#" title="Dashboard"><span><span>Dashboard</span></span></a></li>
+						<li class="parent" id="btn1">
+							<a class="btn1"  href="#" title="My Account"><span><span>My Account</span></span></a>
+							<ul class="child" id="btn1_child" style="display: none;">
+								<li class="ctop"><span>&nbsp;</span></li>
+								<li><a href="#" title="Edit company info"><span><span>Edit company info</span></span></a></li>
+								<li><a href="#" title="Launch SMS Campaign"><span><span>Launch SMS Campaign</span></span></a></li>
+								<li><a href="#" title="Manage employees"><span><span>Manage employees</span></span></a></li>
+								<li><a href="#" title="Logout"><span><span>Logout</span></span></a></li>
+								<li class="cbot"></li>
+							</ul>
+						</li>
+						<!-- <li class="parent">
+													<a class="btn2" href="#" title="Sign in"><span><span>Sign in</span></span></a>
+													<div class="signin" style="display: none;">
+														<div class="inr">
+															<form method="post" action="#">
+																<div class="inpt">
+																	<input type="text" name="user" id="user" onfocus="if(this.value=='Username') this.value='';" onblur="if(this.value=='') this.value='Username';" value="Username" />
+																</div>
+																<div class="inpt">
+																	<input type="password" name="pswd" id="pswd" onfocus="if(this.value=='Password') this.value='';" onblur="if(this.value=='') this.value='Password';" value="Password" />
+																</div>
+																<a class="forgot" href="#" title="Forgot password ?">Forgot password ?</a>
+																<a class="submit" href="#" title="Sign in"><span>Sign in</span></a>
+															</form>
+														</div>
+													</div>
+												</li> -->
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<div id="content">
+			<div class="dropdown">
+				<select name="employee">
+					<option value="1">Bob</option>
+					<option value="2">Anna</option>
+				</select>
+			</div>
+			<div id="calendar"></div>
+			<div id="event_edit_container">
+				<form id="input_form_event">
+					<input type="hidden" />
+					<ul>
+						<li>
+							<span>Date: </span><span class="date_holder"></span> 
+						</li>
+						<li>
+							<label for="start">Start Time: </label><select name="start" READONLY><option value="">Select Start Time</option></select>
+						</li>
+						<li>
+							<label for="end">End Time: </label><select name="end" READONLY><option value="">Select End Time</option></select>
+						</li>
+						<li>
+							<label for="name">Name: </label><input type="text" name="name" />
+						</li>
+						<li>
+							<label for="phone">Phone: </label><input type="text" name="phone" />
+						</li>
+					</ul>
+				</form>
+			</div>
+			
+			
+		</div>
+		
+		<div id="footer">
+			<div class="g48">
+				<a href="http://garage48.org/en" title="garage48"><img src="{{ STATIC_URL }}images/design/garage48.png" alt="garage48 logo" /></a>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+{% endblock %}

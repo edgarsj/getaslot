@@ -484,7 +484,7 @@
                self._renderEvents(options.data, $weekDayColumns, false);
             }
 
-         if (typeof options.schedule == 'string') {
+         if ((typeof options.schedule == 'string')&&(options.schedule.length > 0)) {
             if (options.loading) options.loading(true);
             var jsonOptions = {};
             jsonOptions[options.startParam || 'start'] = Math.round(weekStartDate.getTime() / 1000);
